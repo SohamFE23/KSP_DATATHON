@@ -1,5 +1,5 @@
 """
-PIPELINE STEP 01 — Preprocess Raw NCRB State-Level CSVs
+PIPELINE STEP 01 - Preprocess Raw NCRB State-Level CSVs
 =======================================================
 Input : data/raw/*.csv  (14 state-level NCRB files)
 Output: data/processed/master_state_data.csv
@@ -9,9 +9,14 @@ Run:
 """
 
 import os
+import sys
 import csv
 import pandas as pd
 from pathlib import Path
+
+# Fix Windows console encoding
+if sys.stdout.encoding and sys.stdout.encoding.lower() != 'utf-8':
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
 # ─── Paths ────────────────────────────────────────────────────────────────────
 ROOT     = Path(__file__).resolve().parent.parent
@@ -172,21 +177,44 @@ def find_csv(pattern: str) -> Path | None:
 
 def load_clean_csv(filepath: Path, key_cols: list, rename: dict) -> pd.DataFrame:
     """Load a CSV, strip BOM, normalize col names, extract only needed columns."""
-    df = pd.read_csv(filepath, encoding="utf-8-sig", low_memory=False)
+    # Try multiple encodings; skip bad lines for malformed CSVs
+    for enc in ["utf-8-sig", "latin-1", "cp1252"]:
+        try:
+            df = pd.read_csv(
+                filepath, encoding=enc, low_memory=False,
+                on_bad_lines="skip",   # skip malformed rows
+            )
+            break
+        except Exception:
+            continue
+    else:
+        raise ValueError(f"Cannot read {filepath.name} with any known encoding")
 
-    # Strip whitespace from all column names
-    df.columns = [c.strip().replace("\ufeff", "") for c in df.columns]
+    # Strip whitespace and BOM from column names
+    df.columns = [str(c).strip().replace("\ufeff", "").replace("\u2192", "->") for c in df.columns]
 
-    # Keep only key cols + any rename targets that exist
-    keep = key_cols + [c for c in rename.keys() if c in df.columns]
-    missing = [c for c in rename.keys() if c not in df.columns]
+    # ---- Fuzzy column matching: find closest match for each rename key ------
+    actual_cols = set(df.columns)
+    fuzzy_rename = {}
+    for src, dst in rename.items():
+        if src in actual_cols:
+            fuzzy_rename[src] = dst
+        else:
+            # Try case-insensitive partial match
+            src_lower = src.lower().replace(" ", "_")
+            for col in actual_cols:
+                if src_lower in col.lower().replace(" ", "_") or col.lower().replace(" ", "_") in src_lower:
+                    fuzzy_rename[col] = dst
+                    break
+
+    missing = set(rename.values()) - set(fuzzy_rename.values())
     if missing:
-        print(f"  [WARN] Missing columns in {filepath.name}: {missing[:3]}...")
+        print(f"    [WARN] {filepath.name}: could not map {list(missing)[:2]}")
 
+    # Keep only key cols + matched rename sources
+    keep = key_cols + list(fuzzy_rename.keys())
     df = df[[c for c in keep if c in df.columns]].copy()
-
-    # Rename
-    df.rename(columns=rename, inplace=True)
+    df.rename(columns=fuzzy_rename, inplace=True)
 
     # Normalize key columns
     if "Area_Name" in df.columns:
@@ -203,7 +231,10 @@ def load_clean_csv(filepath: Path, key_cols: list, rename: dict) -> pd.DataFrame
 
     # Drop rows without state/year
     df.dropna(subset=["Area_Name", "Year"], inplace=True)
-    df = df[df["Area_Name"].str.strip() != ""]
+    df = df[df["Area_Name"].str.strip().str.len() > 0]
+
+    if df.empty:
+        raise ValueError(f"No valid rows after cleaning {filepath.name}")
 
     # Group by (state, year) — some files have multiple rows per state/year
     agg = {c: "sum" for c in df.columns if c not in ("Area_Name", "Year")}
@@ -216,7 +247,7 @@ def load_clean_csv(filepath: Path, key_cols: list, rename: dict) -> pd.DataFrame
 
 def main():
     print("\n" + "="*60)
-    print("  STEP 01 — Preprocess State-Level NCRB Datasets")
+    print("  STEP 01 - Preprocess State-Level NCRB Datasets")
     print("="*60)
 
     master = None
@@ -243,6 +274,7 @@ def main():
 
     if master is None:
         print("\n[FATAL] No datasets loaded. Check data/raw/ folder.")
+        print("Ensure the 19 CSV files are in:", RAW_DIR)
         return
 
     # ── Derived columns ──────────────────────────────────────────────────────
