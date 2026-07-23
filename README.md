@@ -293,9 +293,9 @@ data/raw/*.csv
 
 | Name | Role |
 |---|---|
-| Xmanish8 | AI/ML, Analytics, Pipeline, Zoho Catalyst |
-| SohamFE23 | Backend and Data Processing |
-| Parth Wakodkar | Frontend and Dashboard |
+| Xmanish8 | AI/ML, Analytics, Pipeline, Zoho Catalyst, Frontend and Dashboard |
+| SohamFE23 | AI/ML, Analytics, Pipeline, Backend and Data Processing |
+| rajeshsahu777 | AI/ML, Analytics, Pipeline |
 
 ---
 
