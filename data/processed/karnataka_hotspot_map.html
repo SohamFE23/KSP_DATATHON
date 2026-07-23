@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_c744c5f93cd837ff1dc732fb48a066cf {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+<div style="position: fixed; top: 10px; left: 50%; transform: translateX(-50%);
+     z-index: 1000; background: rgba(0,0,0,0.8); color: white;
+     padding: 10px 20px; border-radius: 8px; font-family: Arial;
+     font-size: 16px; font-weight: bold; border: 2px solid #FF4444;">
+    🔴 Karnataka Crime Hotspot Map — DBSCAN Cluster Analysis
+</div>
+    
+<div style="position: fixed; bottom: 30px; left: 20px; z-index: 1000;
+     background: rgba(0,0,0,0.85); color: white; padding: 12px;
+     border-radius: 8px; font-family: Arial; font-size: 13px;
+     border: 1px solid #555;">
+    <b>🗺️ Legend</b><br><br>
+    <span style="color:#FF0000">● HOTSPOT</span> — High crime cluster<br>
+    <span style="color:#3498DB">● NORMAL</span>  — Regular cluster<br>
+    <span style="color:#95A5A6">● ISOLATED</span> — Standalone district<br><br>
+    <i>Circle size = crime volume</i><br>
+    <i>Click marker for details</i>
+</div>
+    
+            <div class="folium-map" id="map_c744c5f93cd837ff1dc732fb48a066cf" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_c744c5f93cd837ff1dc732fb48a066cf = L.map(
+                "map_c744c5f93cd837ff1dc732fb48a066cf",
+                {
+                    center: [15.3173, 75.7139],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 7,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_5b6f42126a2e323e0449bbfd7960a50e = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_5b6f42126a2e323e0449bbfd7960a50e.addTo(map_c744c5f93cd837ff1dc732fb48a066cf);
+        
+    
+            var circle_marker_fefde7a93e56d062afdd498f7b120e2a = L.circleMarker(
+                [16.1691, 75.6966],
+                {"bubblingMouseEvents": true, "color": "#95A5A6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95A5A6", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 35, "stroke": true, "weight": 2}
+            ).addTo(map_c744c5f93cd837ff1dc732fb48a066cf);
+        
+    
+        var popup_e4b880ef3a7c3401334144ff68d38b78 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_5bc0849745c07657600a9bc24d345edd = $(`<div id="html_5bc0849745c07657600a9bc24d345edd" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:220px;'>         <h4 style='color:#95A5A6; margin:0;'>BAGALKOT</h4>         <hr style='margin:4px 0;'>         <b>Zone Type:</b> <span style='color:#95A5A6'>ISOLATED</span><br>         <b>Risk Level:</b> LOW<br>         <b>Total Crimes:</b> 56,235<br>         <b>Avg per Year:</b> 4326<br>         <b>Cluster ID:</b> -1<br>         <b>Years Covered:</b> 13     </div>     </div>`)[0];
+                popup_e4b880ef3a7c3401334144ff68d38b78.setContent(html_5bc0849745c07657600a9bc24d345edd);
+            
+        
+
+        circle_marker_fefde7a93e56d062afdd498f7b120e2a.bindPopup(popup_e4b880ef3a7c3401334144ff68d38b78)
+        ;
+
+        
+    
+    
+            circle_marker_fefde7a93e56d062afdd498f7b120e2a.bindTooltip(
+                `<div>
+                     BAGALKOT — ISOLATED (56,235 crimes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a3e0b1a17f3064bd8f8c78e832568559 = L.circleMarker(
+                [13.1986, 77.5659],
+                {"bubblingMouseEvents": true, "color": "#95A5A6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95A5A6", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 35, "stroke": true, "weight": 2}
+            ).addTo(map_c744c5f93cd837ff1dc732fb48a066cf);
+        
+    
+        var popup_dce58f680fd651095926d819cda44df2 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b803902533e6d9ea29288ccf7e7a1c0f = $(`<div id="html_b803902533e6d9ea29288ccf7e7a1c0f" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:220px;'>         <h4 style='color:#95A5A6; margin:0;'>BANGALORE RURAL</h4>         <hr style='margin:4px 0;'>         <b>Zone Type:</b> <span style='color:#95A5A6'>ISOLATED</span><br>         <b>Risk Level:</b> LOW<br>         <b>Total Crimes:</b> 176,745<br>         <b>Avg per Year:</b> 13596<br>         <b>Cluster ID:</b> -1<br>         <b>Years Covered:</b> 13     </div>     </div>`)[0];
+                popup_dce58f680fd651095926d819cda44df2.setContent(html_b803902533e6d9ea29288ccf7e7a1c0f);
+            
+        
+
+        circle_marker_a3e0b1a17f3064bd8f8c78e832568559.bindPopup(popup_dce58f680fd651095926d819cda44df2)
+        ;
+
+        
+    
+    
+            circle_marker_a3e0b1a17f3064bd8f8c78e832568559.bindTooltip(
+                `<div>
+                     BANGALORE RURAL — ISOLATED (176,745 crimes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_66d2fce217698a76b251c5d60a09c4dc = L.circleMarker(
+                [15.8497, 74.4977],
+                {"bubblingMouseEvents": true, "color": "#95A5A6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95A5A6", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 35, "stroke": true, "weight": 2}
+            ).addTo(map_c744c5f93cd837ff1dc732fb48a066cf);
+        
+    
+        var popup_eb63dc725e2080aee1db3d9ffbefb653 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_de90b4e7bed361a50273f36cd6146ef3 = $(`<div id="html_de90b4e7bed361a50273f36cd6146ef3" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:220px;'>         <h4 style='color:#95A5A6; margin:0;'>BELGAUM</h4>         <hr style='margin:4px 0;'>         <b>Zone Type:</b> <span style='color:#95A5A6'>ISOLATED</span><br>         <b>Risk Level:</b> LOW<br>         <b>Total Crimes:</b> 167,078<br>         <b>Avg per Year:</b> 12852<br>         <b>Cluster ID:</b> -1<br>         <b>Years Covered:</b> 13     </div>     </div>`)[0];
+                popup_eb63dc725e2080aee1db3d9ffbefb653.setContent(html_de90b4e7bed361a50273f36cd6146ef3);
+            
+        
+
+        circle_marker_66d2fce217698a76b251c5d60a09c4dc.bindPopup(popup_eb63dc725e2080aee1db3d9ffbefb653)
+        ;
+
+        
+    
+    
+            circle_marker_66d2fce217698a76b251c5d60a09c4dc.bindTooltip(
+                `<div>
+                     BELGAUM — ISOLATED (167,078 crimes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4963fb4f822128434fee57bafa422996 = L.circleMarker(
+                [15.1394, 76.9214],
+                {"bubblingMouseEvents": true, "color": "#95A5A6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95A5A6", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 35, "stroke": true, "weight": 2}
+            ).addTo(map_c744c5f93cd837ff1dc732fb48a066cf);
+        
+    
+        var popup_c9433e51525823e3bd8bd5d3f40c3a20 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4fa8ffcf147ae5cebff4f2c784657ffc = $(`<div id="html_4fa8ffcf147ae5cebff4f2c784657ffc" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:220px;'>         <h4 style='color:#95A5A6; margin:0;'>BELLARY</h4>         <hr style='margin:4px 0;'>         <b>Zone Type:</b> <span style='color:#95A5A6'>ISOLATED</span><br>         <b>Risk Level:</b> LOW<br>         <b>Total Crimes:</b> 94,591<br>         <b>Avg per Year:</b> 7276<br>         <b>Cluster ID:</b> -1<br>         <b>Years Covered:</b> 13     </div>     </div>`)[0];
+                popup_c9433e51525823e3bd8bd5d3f40c3a20.setContent(html_4fa8ffcf147ae5cebff4f2c784657ffc);
+            
+        
+
+        circle_marker_4963fb4f822128434fee57bafa422996.bindPopup(popup_c9433e51525823e3bd8bd5d3f40c3a20)
+        ;
+
+        
+    
+    
+            circle_marker_4963fb4f822128434fee57bafa422996.bindTooltip(
+                `<div>
+                     BELLARY — ISOLATED (94,591 crimes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3e240a0f5a3e40543eb15659e5f6cb74 = L.circleMarker(
+                [17.9104, 77.5199],
+                {"bubblingMouseEvents": true, "color": "#95A5A6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95A5A6", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 35, "stroke": true, "weight": 2}
+            ).addTo(map_c744c5f93cd837ff1dc732fb48a066cf);
+        
+    
+        var popup_1ff3e663a4e94fa994ce2ca5d8e28a5a = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_74f3820a744500917b1e6bfae03f9478 = $(`<div id="html_74f3820a744500917b1e6bfae03f9478" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:220px;'>         <h4 style='color:#95A5A6; margin:0;'>BIDAR</h4>         <hr style='margin:4px 0;'>         <b>Zone Type:</b> <span style='color:#95A5A6'>ISOLATED</span><br>         <b>Risk Level:</b> LOW<br>         <b>Total Crimes:</b> 101,616<br>         <b>Avg per Year:</b> 7817<br>         <b>Cluster ID:</b> -1<br>         <b>Years Covered:</b> 13     </div>     </div>`)[0];
+                popup_1ff3e663a4e94fa994ce2ca5d8e28a5a.setContent(html_74f3820a744500917b1e6bfae03f9478);
+            
+        
+
+        circle_marker_3e240a0f5a3e40543eb15659e5f6cb74.bindPopup(popup_1ff3e663a4e94fa994ce2ca5d8e28a5a)
+        ;
+
+        
+    
+    
+            circle_marker_3e240a0f5a3e40543eb15659e5f6cb74.bindTooltip(
+                `<div>
+                     BIDAR — ISOLATED (101,616 crimes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f125abd13f6ff9fafba1d0ba50ceeef1 = L.circleMarker(
+                [16.8302, 75.71],
+                {"bubblingMouseEvents": true, "color": "#95A5A6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95A5A6", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 35, "stroke": true, "weight": 2}
+            ).addTo(map_c744c5f93cd837ff1dc732fb48a066cf);
+        
+    
+        var popup_fe56b5bcf338260b0ae4c63f3a4f523d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_91c435e3fdcfd96935564adc3d7b35d3 = $(`<div id="html_91c435e3fdcfd96935564adc3d7b35d3" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:220px;'>         <h4 style='color:#95A5A6; margin:0;'>BIJAPUR</h4>         <hr style='margin:4px 0;'>         <b>Zone Type:</b> <span style='color:#95A5A6'>ISOLATED</span><br>         <b>Risk Level:</b> LOW<br>         <b>Total Crimes:</b> 83,554<br>         <b>Avg per Year:</b> 6427<br>         <b>Cluster ID:</b> -1<br>         <b>Years Covered:</b> 13     </div>     </div>`)[0];
+                popup_fe56b5bcf338260b0ae4c63f3a4f523d.setContent(html_91c435e3fdcfd96935564adc3d7b35d3);
+            
+        
+
+        circle_marker_f125abd13f6ff9fafba1d0ba50ceeef1.bindPopup(popup_fe56b5bcf338260b0ae4c63f3a4f523d)
+        ;
+
+        
+    
+    
+            circle_marker_f125abd13f6ff9fafba1d0ba50ceeef1.bindTooltip(
+                `<div>
+                     BIJAPUR — ISOLATED (83,554 crimes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_81b1d93063c9448d53e829ee60ea78aa = L.circleMarker(
+                [13.3153, 75.7754],
+                {"bubblingMouseEvents": true, "color": "#95A5A6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95A5A6", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 35, "stroke": true, "weight": 2}
+            ).addTo(map_c744c5f93cd837ff1dc732fb48a066cf);
+        
+    
+        var popup_c155d6eb334211ea507ad70727d916f0 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_6ded17cb2daa3c4467fc44983bcc645d = $(`<div id="html_6ded17cb2daa3c4467fc44983bcc645d" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:220px;'>         <h4 style='color:#95A5A6; margin:0;'>CHICKMAGALUR</h4>         <hr style='margin:4px 0;'>         <b>Zone Type:</b> <span style='color:#95A5A6'>ISOLATED</span><br>         <b>Risk Level:</b> LOW<br>         <b>Total Crimes:</b> 77,983<br>         <b>Avg per Year:</b> 5999<br>         <b>Cluster ID:</b> -1<br>         <b>Years Covered:</b> 13     </div>     </div>`)[0];
+                popup_c155d6eb334211ea507ad70727d916f0.setContent(html_6ded17cb2daa3c4467fc44983bcc645d);
+            
+        
+
+        circle_marker_81b1d93063c9448d53e829ee60ea78aa.bindPopup(popup_c155d6eb334211ea507ad70727d916f0)
+        ;
+
+        
+    
+    
+            circle_marker_81b1d93063c9448d53e829ee60ea78aa.bindTooltip(
+                `<div>
+                     CHICKMAGALUR — ISOLATED (77,983 crimes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_5d3f8e0d2384dfe21b8003b3b7a0b898 = L.circleMarker(
+                [14.2251, 76.398],
+                {"bubblingMouseEvents": true, "color": "#3498DB", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498DB", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 35, "stroke": true, "weight": 2}
+            ).addTo(map_c744c5f93cd837ff1dc732fb48a066cf);
+        
+    
+        var popup_682be7444e3a2463dceaca15760fdf47 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f09828743552707c205bb035c9ba0c94 = $(`<div id="html_f09828743552707c205bb035c9ba0c94" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:220px;'>         <h4 style='color:#3498DB; margin:0;'>CHITRADURGA</h4>         <hr style='margin:4px 0;'>         <b>Zone Type:</b> <span style='color:#3498DB'>NORMAL</span><br>         <b>Risk Level:</b> LOW<br>         <b>Total Crimes:</b> 101,374<br>         <b>Avg per Year:</b> 7798<br>         <b>Cluster ID:</b> 0<br>         <b>Years Covered:</b> 13     </div>     </div>`)[0];
+                popup_682be7444e3a2463dceaca15760fdf47.setContent(html_f09828743552707c205bb035c9ba0c94);
+            
+        
+
+        circle_marker_5d3f8e0d2384dfe21b8003b3b7a0b898.bindPopup(popup_682be7444e3a2463dceaca15760fdf47)
+        ;
+
+        
+    
+    
+            circle_marker_5d3f8e0d2384dfe21b8003b3b7a0b898.bindTooltip(
+                `<div>
+                     CHITRADURGA — NORMAL (101,374 crimes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a50df18e7a2eb46b68c77cc49b024f03 = L.circleMarker(
+                [14.4644, 75.9218],
+                {"bubblingMouseEvents": true, "color": "#3498DB", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498DB", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 35, "stroke": true, "weight": 2}
+            ).addTo(map_c744c5f93cd837ff1dc732fb48a066cf);
+        
+    
+        var popup_9a91f1aa8583c869a0a51cd5ce593a68 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_ab6e7285f835c026c3d17a1078a233f0 = $(`<div id="html_ab6e7285f835c026c3d17a1078a233f0" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:220px;'>         <h4 style='color:#3498DB; margin:0;'>DAVANAGERE</h4>         <hr style='margin:4px 0;'>         <b>Zone Type:</b> <span style='color:#3498DB'>NORMAL</span><br>         <b>Risk Level:</b> LOW<br>         <b>Total Crimes:</b> 84,169<br>         <b>Avg per Year:</b> 6475<br>         <b>Cluster ID:</b> 0<br>         <b>Years Covered:</b> 13     </div>     </div>`)[0];
+                popup_9a91f1aa8583c869a0a51cd5ce593a68.setContent(html_ab6e7285f835c026c3d17a1078a233f0);
+            
+        
+
+        circle_marker_a50df18e7a2eb46b68c77cc49b024f03.bindPopup(popup_9a91f1aa8583c869a0a51cd5ce593a68)
+        ;
+
+        
+    
+    
+            circle_marker_a50df18e7a2eb46b68c77cc49b024f03.bindTooltip(
+                `<div>
+                     DAVANAGERE — NORMAL (84,169 crimes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1024cf62c936f037c32c54f949378229 = L.circleMarker(
+                [15.4298, 75.6369],
+                {"bubblingMouseEvents": true, "color": "#3498DB", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498DB", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 28.081, "stroke": true, "weight": 2}
+            ).addTo(map_c744c5f93cd837ff1dc732fb48a066cf);
+        
+    
+        var popup_6ccd29f5fb340b1d0349f815757188f4 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b0e0a78d9bb3072138183e1fdb662240 = $(`<div id="html_b0e0a78d9bb3072138183e1fdb662240" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:220px;'>         <h4 style='color:#3498DB; margin:0;'>GADAG</h4>         <hr style='margin:4px 0;'>         <b>Zone Type:</b> <span style='color:#3498DB'>NORMAL</span><br>         <b>Risk Level:</b> LOW<br>         <b>Total Crimes:</b> 28,081<br>         <b>Avg per Year:</b> 2160<br>         <b>Cluster ID:</b> 1<br>         <b>Years Covered:</b> 13     </div>     </div>`)[0];
+                popup_6ccd29f5fb340b1d0349f815757188f4.setContent(html_b0e0a78d9bb3072138183e1fdb662240);
+            
+        
+
+        circle_marker_1024cf62c936f037c32c54f949378229.bindPopup(popup_6ccd29f5fb340b1d0349f815757188f4)
+        ;
+
+        
+    
+    
+            circle_marker_1024cf62c936f037c32c54f949378229.bindTooltip(
+                `<div>
+                     GADAG — NORMAL (28,081 crimes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_7691af7b78be93e58b88e90bc5e043dc = L.circleMarker(
+                [17.3297, 76.8343],
+                {"bubblingMouseEvents": true, "color": "#95A5A6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95A5A6", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 35, "stroke": true, "weight": 2}
+            ).addTo(map_c744c5f93cd837ff1dc732fb48a066cf);
+        
+    
+        var popup_150589ddbb13499938d05e5cc46bc5fa = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f71a577eef3ad3a499d3272f64feba27 = $(`<div id="html_f71a577eef3ad3a499d3272f64feba27" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:220px;'>         <h4 style='color:#95A5A6; margin:0;'>GULBARGA</h4>         <hr style='margin:4px 0;'>         <b>Zone Type:</b> <span style='color:#95A5A6'>ISOLATED</span><br>         <b>Risk Level:</b> LOW<br>         <b>Total Crimes:</b> 127,934<br>         <b>Avg per Year:</b> 9841<br>         <b>Cluster ID:</b> -1<br>         <b>Years Covered:</b> 13     </div>     </div>`)[0];
+                popup_150589ddbb13499938d05e5cc46bc5fa.setContent(html_f71a577eef3ad3a499d3272f64feba27);
+            
+        
+
+        circle_marker_7691af7b78be93e58b88e90bc5e043dc.bindPopup(popup_150589ddbb13499938d05e5cc46bc5fa)
+        ;
+
+        
+    
+    
+            circle_marker_7691af7b78be93e58b88e90bc5e043dc.bindTooltip(
+                `<div>
+                     GULBARGA — ISOLATED (127,934 crimes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_64bb9fc56d2c1b096c29dcd2e46b0af6 = L.circleMarker(
+                [13.0072, 76.0962],
+                {"bubblingMouseEvents": true, "color": "#95A5A6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95A5A6", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 35, "stroke": true, "weight": 2}
+            ).addTo(map_c744c5f93cd837ff1dc732fb48a066cf);
+        
+    
+        var popup_52c9c0d0fb6dddb26ed9cc1ef78fc57b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4fd29d126a2dca59beb9881392180a58 = $(`<div id="html_4fd29d126a2dca59beb9881392180a58" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:220px;'>         <h4 style='color:#95A5A6; margin:0;'>HASSAN</h4>         <hr style='margin:4px 0;'>         <b>Zone Type:</b> <span style='color:#95A5A6'>ISOLATED</span><br>         <b>Risk Level:</b> LOW<br>         <b>Total Crimes:</b> 130,965<br>         <b>Avg per Year:</b> 10074<br>         <b>Cluster ID:</b> -1<br>         <b>Years Covered:</b> 13     </div>     </div>`)[0];
+                popup_52c9c0d0fb6dddb26ed9cc1ef78fc57b.setContent(html_4fd29d126a2dca59beb9881392180a58);
+            
+        
+
+        circle_marker_64bb9fc56d2c1b096c29dcd2e46b0af6.bindPopup(popup_52c9c0d0fb6dddb26ed9cc1ef78fc57b)
+        ;
+
+        
+    
+    
+            circle_marker_64bb9fc56d2c1b096c29dcd2e46b0af6.bindTooltip(
+                `<div>
+                     HASSAN — ISOLATED (130,965 crimes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b6a69d5c925f2b74dc84197fad48efee = L.circleMarker(
+                [12.3375, 75.8069],
+                {"bubblingMouseEvents": true, "color": "#95A5A6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95A5A6", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 35, "stroke": true, "weight": 2}
+            ).addTo(map_c744c5f93cd837ff1dc732fb48a066cf);
+        
+    
+        var popup_921d82b7fd1a05d4cd786c37aa84fcf4 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_d1f0503a5056b2a3aadbf2768daf40ae = $(`<div id="html_d1f0503a5056b2a3aadbf2768daf40ae" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:220px;'>         <h4 style='color:#95A5A6; margin:0;'>KODAGU</h4>         <hr style='margin:4px 0;'>         <b>Zone Type:</b> <span style='color:#95A5A6'>ISOLATED</span><br>         <b>Risk Level:</b> LOW<br>         <b>Total Crimes:</b> 43,038<br>         <b>Avg per Year:</b> 3311<br>         <b>Cluster ID:</b> -1<br>         <b>Years Covered:</b> 13     </div>     </div>`)[0];
+                popup_921d82b7fd1a05d4cd786c37aa84fcf4.setContent(html_d1f0503a5056b2a3aadbf2768daf40ae);
+            
+        
+
+        circle_marker_b6a69d5c925f2b74dc84197fad48efee.bindPopup(popup_921d82b7fd1a05d4cd786c37aa84fcf4)
+        ;
+
+        
+    
+    
+            circle_marker_b6a69d5c925f2b74dc84197fad48efee.bindTooltip(
+                `<div>
+                     KODAGU — ISOLATED (43,038 crimes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_eab60ed23db398359c431ff54d7de201 = L.circleMarker(
+                [13.1369, 78.1294],
+                {"bubblingMouseEvents": true, "color": "#95A5A6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95A5A6", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 35, "stroke": true, "weight": 2}
+            ).addTo(map_c744c5f93cd837ff1dc732fb48a066cf);
+        
+    
+        var popup_e288d21548ce4445574813e6e478d483 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_5f480471fbae5b34b7e7fb3b5dc74bb9 = $(`<div id="html_5f480471fbae5b34b7e7fb3b5dc74bb9" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:220px;'>         <h4 style='color:#95A5A6; margin:0;'>KOLAR</h4>         <hr style='margin:4px 0;'>         <b>Zone Type:</b> <span style='color:#95A5A6'>ISOLATED</span><br>         <b>Risk Level:</b> LOW<br>         <b>Total Crimes:</b> 75,661<br>         <b>Avg per Year:</b> 5820<br>         <b>Cluster ID:</b> -1<br>         <b>Years Covered:</b> 13     </div>     </div>`)[0];
+                popup_e288d21548ce4445574813e6e478d483.setContent(html_5f480471fbae5b34b7e7fb3b5dc74bb9);
+            
+        
+
+        circle_marker_eab60ed23db398359c431ff54d7de201.bindPopup(popup_e288d21548ce4445574813e6e478d483)
+        ;
+
+        
+    
+    
+            circle_marker_eab60ed23db398359c431ff54d7de201.bindTooltip(
+                `<div>
+                     KOLAR — ISOLATED (75,661 crimes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_691aba505afb3c2813018fefb0647b76 = L.circleMarker(
+                [15.3508, 76.1549],
+                {"bubblingMouseEvents": true, "color": "#3498DB", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498DB", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 35, "stroke": true, "weight": 2}
+            ).addTo(map_c744c5f93cd837ff1dc732fb48a066cf);
+        
+    
+        var popup_498601366e9420f2d8ca3ebf3fca40cd = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_145001b175aaf7a241c3a801bdc65fe2 = $(`<div id="html_145001b175aaf7a241c3a801bdc65fe2" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:220px;'>         <h4 style='color:#3498DB; margin:0;'>KOPPAL</h4>         <hr style='margin:4px 0;'>         <b>Zone Type:</b> <span style='color:#3498DB'>NORMAL</span><br>         <b>Risk Level:</b> LOW<br>         <b>Total Crimes:</b> 43,275<br>         <b>Avg per Year:</b> 3329<br>         <b>Cluster ID:</b> 1<br>         <b>Years Covered:</b> 13     </div>     </div>`)[0];
+                popup_498601366e9420f2d8ca3ebf3fca40cd.setContent(html_145001b175aaf7a241c3a801bdc65fe2);
+            
+        
+
+        circle_marker_691aba505afb3c2813018fefb0647b76.bindPopup(popup_498601366e9420f2d8ca3ebf3fca40cd)
+        ;
+
+        
+    
+    
+            circle_marker_691aba505afb3c2813018fefb0647b76.bindTooltip(
+                `<div>
+                     KOPPAL — NORMAL (43,275 crimes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a279a7d9e2fb36014e55c6ccfad6c42b = L.circleMarker(
+                [12.5218, 76.8951],
+                {"bubblingMouseEvents": true, "color": "#FF0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF0000", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 35, "stroke": true, "weight": 2}
+            ).addTo(map_c744c5f93cd837ff1dc732fb48a066cf);
+        
+    
+        var popup_cd39241847c5aae77e2e461f35c9b1f6 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_fddedbd92723fb489679ebf731eba05b = $(`<div id="html_fddedbd92723fb489679ebf731eba05b" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:220px;'>         <h4 style='color:#FF0000; margin:0;'>MANDYA</h4>         <hr style='margin:4px 0;'>         <b>Zone Type:</b> <span style='color:#FF0000'>HOTSPOT</span><br>         <b>Risk Level:</b> LOW<br>         <b>Total Crimes:</b> 131,006<br>         <b>Avg per Year:</b> 10077<br>         <b>Cluster ID:</b> 2<br>         <b>Years Covered:</b> 13     </div>     </div>`)[0];
+                popup_cd39241847c5aae77e2e461f35c9b1f6.setContent(html_fddedbd92723fb489679ebf731eba05b);
+            
+        
+
+        circle_marker_a279a7d9e2fb36014e55c6ccfad6c42b.bindPopup(popup_cd39241847c5aae77e2e461f35c9b1f6)
+        ;
+
+        
+    
+    
+            circle_marker_a279a7d9e2fb36014e55c6ccfad6c42b.bindTooltip(
+                `<div>
+                     MANDYA — HOTSPOT (131,006 crimes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_f0fe5eda9f861417c8a7bdd841e18f25 = L.marker(
+                [12.5218, 76.8951],
+                {
+}
+            ).addTo(map_c744c5f93cd837ff1dc732fb48a066cf);
+        
+    
+            var icon_bad5d6add37bd51317f471958573ca22 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "fire",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_f0fe5eda9f861417c8a7bdd841e18f25.bindTooltip(
+                `<div>
+                     🔴 HOTSPOT: MANDYA
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f0fe5eda9f861417c8a7bdd841e18f25.setIcon(icon_bad5d6add37bd51317f471958573ca22);
+            
+    
+            var circle_marker_244cc2c717e166aecad5b47dd629ae3a = L.circleMarker(
+                [16.212, 77.3439],
+                {"bubblingMouseEvents": true, "color": "#95A5A6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95A5A6", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 35, "stroke": true, "weight": 2}
+            ).addTo(map_c744c5f93cd837ff1dc732fb48a066cf);
+        
+    
+        var popup_e19dac4b1d6fe93c7cd1f508754de11b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_e191f07b495240f495f26795d38b7fb4 = $(`<div id="html_e191f07b495240f495f26795d38b7fb4" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:220px;'>         <h4 style='color:#95A5A6; margin:0;'>RAICHUR</h4>         <hr style='margin:4px 0;'>         <b>Zone Type:</b> <span style='color:#95A5A6'>ISOLATED</span><br>         <b>Risk Level:</b> LOW<br>         <b>Total Crimes:</b> 75,627<br>         <b>Avg per Year:</b> 5817<br>         <b>Cluster ID:</b> -1<br>         <b>Years Covered:</b> 13     </div>     </div>`)[0];
+                popup_e19dac4b1d6fe93c7cd1f508754de11b.setContent(html_e191f07b495240f495f26795d38b7fb4);
+            
+        
+
+        circle_marker_244cc2c717e166aecad5b47dd629ae3a.bindPopup(popup_e19dac4b1d6fe93c7cd1f508754de11b)
+        ;
+
+        
+    
+    
+            circle_marker_244cc2c717e166aecad5b47dd629ae3a.bindTooltip(
+                `<div>
+                     RAICHUR — ISOLATED (75,627 crimes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_5d7feb44d5abf79a4bcd12877b80f71c = L.circleMarker(
+                [13.9299, 75.5681],
+                {"bubblingMouseEvents": true, "color": "#95A5A6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95A5A6", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 35, "stroke": true, "weight": 2}
+            ).addTo(map_c744c5f93cd837ff1dc732fb48a066cf);
+        
+    
+        var popup_79bc078fbafa8730b9084967ad2c0d6d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_384b60ac220120253df16b7d18cf21e2 = $(`<div id="html_384b60ac220120253df16b7d18cf21e2" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:220px;'>         <h4 style='color:#95A5A6; margin:0;'>SHIMOGA</h4>         <hr style='margin:4px 0;'>         <b>Zone Type:</b> <span style='color:#95A5A6'>ISOLATED</span><br>         <b>Risk Level:</b> LOW<br>         <b>Total Crimes:</b> 127,605<br>         <b>Avg per Year:</b> 9816<br>         <b>Cluster ID:</b> -1<br>         <b>Years Covered:</b> 13     </div>     </div>`)[0];
+                popup_79bc078fbafa8730b9084967ad2c0d6d.setContent(html_384b60ac220120253df16b7d18cf21e2);
+            
+        
+
+        circle_marker_5d7feb44d5abf79a4bcd12877b80f71c.bindPopup(popup_79bc078fbafa8730b9084967ad2c0d6d)
+        ;
+
+        
+    
+    
+            circle_marker_5d7feb44d5abf79a4bcd12877b80f71c.bindTooltip(
+                `<div>
+                     SHIMOGA — ISOLATED (127,605 crimes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1df4cbc4a4802e7df629e60262ab4788 = L.circleMarker(
+                [13.3379, 77.1173],
+                {"bubblingMouseEvents": true, "color": "#FF0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF0000", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 35, "stroke": true, "weight": 2}
+            ).addTo(map_c744c5f93cd837ff1dc732fb48a066cf);
+        
+    
+        var popup_6829bd55951fa68037033ade016349db = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_006a11a9e57012d20ea3b3949dcc6ccf = $(`<div id="html_006a11a9e57012d20ea3b3949dcc6ccf" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:220px;'>         <h4 style='color:#FF0000; margin:0;'>TUMKUR</h4>         <hr style='margin:4px 0;'>         <b>Zone Type:</b> <span style='color:#FF0000'>HOTSPOT</span><br>         <b>Risk Level:</b> LOW<br>         <b>Total Crimes:</b> 128,066<br>         <b>Avg per Year:</b> 9851<br>         <b>Cluster ID:</b> 2<br>         <b>Years Covered:</b> 13     </div>     </div>`)[0];
+                popup_6829bd55951fa68037033ade016349db.setContent(html_006a11a9e57012d20ea3b3949dcc6ccf);
+            
+        
+
+        circle_marker_1df4cbc4a4802e7df629e60262ab4788.bindPopup(popup_6829bd55951fa68037033ade016349db)
+        ;
+
+        
+    
+    
+            circle_marker_1df4cbc4a4802e7df629e60262ab4788.bindTooltip(
+                `<div>
+                     TUMKUR — HOTSPOT (128,066 crimes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_121adf0a9355e822cb7779c8c57fe88b = L.marker(
+                [13.3379, 77.1173],
+                {
+}
+            ).addTo(map_c744c5f93cd837ff1dc732fb48a066cf);
+        
+    
+            var icon_03029ad62171fea54e1f9615a8ed773e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "fire",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_121adf0a9355e822cb7779c8c57fe88b.bindTooltip(
+                `<div>
+                     🔴 HOTSPOT: TUMKUR
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_121adf0a9355e822cb7779c8c57fe88b.setIcon(icon_03029ad62171fea54e1f9615a8ed773e);
+            
+    
+            var circle_marker_08f127b375a89e7b01d605d041e75931 = L.circleMarker(
+                [13.3409, 74.7421],
+                {"bubblingMouseEvents": true, "color": "#95A5A6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#95A5A6", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 35, "stroke": true, "weight": 2}
+            ).addTo(map_c744c5f93cd837ff1dc732fb48a066cf);
+        
+    
+        var popup_0a57ab0333d38a80c972198a767b28b5 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_aa5636e2a15a8f2aeb1aec7d1fe936e4 = $(`<div id="html_aa5636e2a15a8f2aeb1aec7d1fe936e4" style="width: 100.0%; height: 100.0%;">     <div style='font-family:Arial; width:220px;'>         <h4 style='color:#95A5A6; margin:0;'>UDUPI</h4>         <hr style='margin:4px 0;'>         <b>Zone Type:</b> <span style='color:#95A5A6'>ISOLATED</span><br>         <b>Risk Level:</b> LOW<br>         <b>Total Crimes:</b> 62,848<br>         <b>Avg per Year:</b> 4834<br>         <b>Cluster ID:</b> -1<br>         <b>Years Covered:</b> 13     </div>     </div>`)[0];
+                popup_0a57ab0333d38a80c972198a767b28b5.setContent(html_aa5636e2a15a8f2aeb1aec7d1fe936e4);
+            
+        
+
+        circle_marker_08f127b375a89e7b01d605d041e75931.bindPopup(popup_0a57ab0333d38a80c972198a767b28b5)
+        ;
+
+        
+    
+    
+            circle_marker_08f127b375a89e7b01d605d041e75931.bindTooltip(
+                `<div>
+                     UDUPI — ISOLATED (62,848 crimes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+</script>
+</html>
