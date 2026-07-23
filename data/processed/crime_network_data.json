@@ -1,0 +1,1196 @@
+{
+  "nodes": [
+    {
+      "id": "MURDER",
+      "label": "Murder",
+      "group": "Violent",
+      "color": "#f85149",
+      "size": 40
+    },
+    {
+      "id": "RAPE",
+      "label": "Rape",
+      "group": "Violent",
+      "color": "#f85149",
+      "size": 36
+    },
+    {
+      "id": "KIDNAPPING_ABDUCTION",
+      "label": "Kidnapping Abduction",
+      "group": "Violent",
+      "color": "#f85149",
+      "size": 38
+    },
+    {
+      "id": "DACOITY",
+      "label": "Dacoity",
+      "group": "Violent",
+      "color": "#f85149",
+      "size": 33
+    },
+    {
+      "id": "ROBBERY",
+      "label": "Robbery",
+      "group": "Violent",
+      "color": "#f85149",
+      "size": 39
+    },
+    {
+      "id": "BURGLARY",
+      "label": "Burglary",
+      "group": "Property",
+      "color": "#e3b341",
+      "size": 43
+    },
+    {
+      "id": "THEFT",
+      "label": "Theft",
+      "group": "Property",
+      "color": "#e3b341",
+      "size": 46
+    },
+    {
+      "id": "AUTO_THEFT",
+      "label": "Auto Theft",
+      "group": "Property",
+      "color": "#e3b341",
+      "size": 44
+    },
+    {
+      "id": "CHEATING",
+      "label": "Cheating",
+      "group": "Property",
+      "color": "#e3b341",
+      "size": 42
+    },
+    {
+      "id": "ARSON",
+      "label": "Arson",
+      "group": "Violent",
+      "color": "#f85149",
+      "size": 34
+    },
+    {
+      "id": "DOWRY_DEATHS",
+      "label": "Dowry Deaths",
+      "group": "Women",
+      "color": "#bc8cff",
+      "size": 34
+    },
+    {
+      "id": "ASSAULT_ON_WOMEN_WITH_INTENT_TO_OUTRAGE_HER_MODESTY",
+      "label": "Assault On Women Wit",
+      "group": "Women",
+      "color": "#bc8cff",
+      "size": 40
+    },
+    {
+      "id": "CRUELTY_BY_HUSBAND_OR_HIS_RELATIVES",
+      "label": "Cruelty By Husband O",
+      "group": "Women",
+      "color": "#bc8cff",
+      "size": 41
+    },
+    {
+      "id": "RIOTS",
+      "label": "Riots",
+      "group": "Social",
+      "color": "#58a6ff",
+      "size": 44
+    },
+    {
+      "id": "CAUSING_DEATH_BY_NEGLIGENCE",
+      "label": "Causing Death By Neg",
+      "group": "Social",
+      "color": "#58a6ff",
+      "size": 36
+    },
+    {
+      "id": "HURT_GREVIOUS_HURT",
+      "label": "Hurt Grevious Hurt",
+      "group": "Social",
+      "color": "#58a6ff",
+      "size": 47
+    },
+    {
+      "id": "CRIMINAL_BREACH_OF_TRUST",
+      "label": "Criminal Breach Of T",
+      "group": "Property",
+      "color": "#e3b341",
+      "size": 36
+    },
+    {
+      "id": "COUNTERFIETING",
+      "label": "Counterfieting",
+      "group": "Property",
+      "color": "#e3b341",
+      "size": 32
+    }
+  ],
+  "edges": [
+    {
+      "from": "MURDER",
+      "to": "RAPE",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.92"
+    },
+    {
+      "from": "MURDER",
+      "to": "KIDNAPPING_ABDUCTION",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.89"
+    },
+    {
+      "from": "MURDER",
+      "to": "DACOITY",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.98"
+    },
+    {
+      "from": "MURDER",
+      "to": "ROBBERY",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.93"
+    },
+    {
+      "from": "MURDER",
+      "to": "BURGLARY",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.98"
+    },
+    {
+      "from": "MURDER",
+      "to": "THEFT",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.92"
+    },
+    {
+      "from": "MURDER",
+      "to": "AUTO_THEFT",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.86"
+    },
+    {
+      "from": "MURDER",
+      "to": "CHEATING",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.88"
+    },
+    {
+      "from": "MURDER",
+      "to": "ARSON",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.94"
+    },
+    {
+      "from": "MURDER",
+      "to": "DOWRY_DEATHS",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.99"
+    },
+    {
+      "from": "MURDER",
+      "to": "ASSAULT_ON_WOMEN_WITH_INTENT_TO_OUTRAGE_HER_MODESTY",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.95"
+    },
+    {
+      "from": "MURDER",
+      "to": "CRUELTY_BY_HUSBAND_OR_HIS_RELATIVES",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.96"
+    },
+    {
+      "from": "MURDER",
+      "to": "RIOTS",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.99"
+    },
+    {
+      "from": "MURDER",
+      "to": "CAUSING_DEATH_BY_NEGLIGENCE",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.83"
+    },
+    {
+      "from": "MURDER",
+      "to": "HURT_GREVIOUS_HURT",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.99"
+    },
+    {
+      "from": "MURDER",
+      "to": "CRIMINAL_BREACH_OF_TRUST",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.95"
+    },
+    {
+      "from": "MURDER",
+      "to": "COUNTERFIETING",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.89"
+    },
+    {
+      "from": "RAPE",
+      "to": "KIDNAPPING_ABDUCTION",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.96"
+    },
+    {
+      "from": "RAPE",
+      "to": "DACOITY",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.93"
+    },
+    {
+      "from": "RAPE",
+      "to": "ROBBERY",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.94"
+    },
+    {
+      "from": "RAPE",
+      "to": "BURGLARY",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.89"
+    },
+    {
+      "from": "RAPE",
+      "to": "THEFT",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.87"
+    },
+    {
+      "from": "RAPE",
+      "to": "AUTO_THEFT",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.86"
+    },
+    {
+      "from": "RAPE",
+      "to": "CHEATING",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.90"
+    },
+    {
+      "from": "RAPE",
+      "to": "ARSON",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.85"
+    },
+    {
+      "from": "RAPE",
+      "to": "DOWRY_DEATHS",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.92"
+    },
+    {
+      "from": "RAPE",
+      "to": "ASSAULT_ON_WOMEN_WITH_INTENT_TO_OUTRAGE_HER_MODESTY",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.99"
+    },
+    {
+      "from": "RAPE",
+      "to": "CRUELTY_BY_HUSBAND_OR_HIS_RELATIVES",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.96"
+    },
+    {
+      "from": "RAPE",
+      "to": "RIOTS",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.93"
+    },
+    {
+      "from": "RAPE",
+      "to": "CAUSING_DEATH_BY_NEGLIGENCE",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.90"
+    },
+    {
+      "from": "RAPE",
+      "to": "HURT_GREVIOUS_HURT",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.90"
+    },
+    {
+      "from": "RAPE",
+      "to": "CRIMINAL_BREACH_OF_TRUST",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.87"
+    },
+    {
+      "from": "RAPE",
+      "to": "COUNTERFIETING",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.76"
+    },
+    {
+      "from": "KIDNAPPING_ABDUCTION",
+      "to": "DACOITY",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.91"
+    },
+    {
+      "from": "KIDNAPPING_ABDUCTION",
+      "to": "ROBBERY",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.96"
+    },
+    {
+      "from": "KIDNAPPING_ABDUCTION",
+      "to": "BURGLARY",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.88"
+    },
+    {
+      "from": "KIDNAPPING_ABDUCTION",
+      "to": "THEFT",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.91"
+    },
+    {
+      "from": "KIDNAPPING_ABDUCTION",
+      "to": "AUTO_THEFT",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.92"
+    },
+    {
+      "from": "KIDNAPPING_ABDUCTION",
+      "to": "CHEATING",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.96"
+    },
+    {
+      "from": "KIDNAPPING_ABDUCTION",
+      "to": "ARSON",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.81"
+    },
+    {
+      "from": "KIDNAPPING_ABDUCTION",
+      "to": "DOWRY_DEATHS",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.89"
+    },
+    {
+      "from": "KIDNAPPING_ABDUCTION",
+      "to": "ASSAULT_ON_WOMEN_WITH_INTENT_TO_OUTRAGE_HER_MODESTY",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.96"
+    },
+    {
+      "from": "KIDNAPPING_ABDUCTION",
+      "to": "CRUELTY_BY_HUSBAND_OR_HIS_RELATIVES",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.95"
+    },
+    {
+      "from": "KIDNAPPING_ABDUCTION",
+      "to": "RIOTS",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.89"
+    },
+    {
+      "from": "KIDNAPPING_ABDUCTION",
+      "to": "CAUSING_DEATH_BY_NEGLIGENCE",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.89"
+    },
+    {
+      "from": "KIDNAPPING_ABDUCTION",
+      "to": "HURT_GREVIOUS_HURT",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.87"
+    },
+    {
+      "from": "KIDNAPPING_ABDUCTION",
+      "to": "CRIMINAL_BREACH_OF_TRUST",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.87"
+    },
+    {
+      "from": "KIDNAPPING_ABDUCTION",
+      "to": "COUNTERFIETING",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.78"
+    },
+    {
+      "from": "DACOITY",
+      "to": "ROBBERY",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.95"
+    },
+    {
+      "from": "DACOITY",
+      "to": "BURGLARY",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.97"
+    },
+    {
+      "from": "DACOITY",
+      "to": "THEFT",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.94"
+    },
+    {
+      "from": "DACOITY",
+      "to": "AUTO_THEFT",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.90"
+    },
+    {
+      "from": "DACOITY",
+      "to": "CHEATING",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.91"
+    },
+    {
+      "from": "DACOITY",
+      "to": "ARSON",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.91"
+    },
+    {
+      "from": "DACOITY",
+      "to": "DOWRY_DEATHS",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.98"
+    },
+    {
+      "from": "DACOITY",
+      "to": "ASSAULT_ON_WOMEN_WITH_INTENT_TO_OUTRAGE_HER_MODESTY",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.95"
+    },
+    {
+      "from": "DACOITY",
+      "to": "CRUELTY_BY_HUSBAND_OR_HIS_RELATIVES",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.96"
+    },
+    {
+      "from": "DACOITY",
+      "to": "RIOTS",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.96"
+    },
+    {
+      "from": "DACOITY",
+      "to": "CAUSING_DEATH_BY_NEGLIGENCE",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.84"
+    },
+    {
+      "from": "DACOITY",
+      "to": "HURT_GREVIOUS_HURT",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.97"
+    },
+    {
+      "from": "DACOITY",
+      "to": "CRIMINAL_BREACH_OF_TRUST",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.95"
+    },
+    {
+      "from": "DACOITY",
+      "to": "COUNTERFIETING",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.89"
+    },
+    {
+      "from": "ROBBERY",
+      "to": "BURGLARY",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.93"
+    },
+    {
+      "from": "ROBBERY",
+      "to": "THEFT",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.97"
+    },
+    {
+      "from": "ROBBERY",
+      "to": "AUTO_THEFT",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.97"
+    },
+    {
+      "from": "ROBBERY",
+      "to": "CHEATING",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.98"
+    },
+    {
+      "from": "ROBBERY",
+      "to": "ARSON",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.82"
+    },
+    {
+      "from": "ROBBERY",
+      "to": "DOWRY_DEATHS",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.93"
+    },
+    {
+      "from": "ROBBERY",
+      "to": "ASSAULT_ON_WOMEN_WITH_INTENT_TO_OUTRAGE_HER_MODESTY",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.94"
+    },
+    {
+      "from": "ROBBERY",
+      "to": "CRUELTY_BY_HUSBAND_OR_HIS_RELATIVES",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.96"
+    },
+    {
+      "from": "ROBBERY",
+      "to": "RIOTS",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.91"
+    },
+    {
+      "from": "ROBBERY",
+      "to": "CAUSING_DEATH_BY_NEGLIGENCE",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.90"
+    },
+    {
+      "from": "ROBBERY",
+      "to": "HURT_GREVIOUS_HURT",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.91"
+    },
+    {
+      "from": "ROBBERY",
+      "to": "CRIMINAL_BREACH_OF_TRUST",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.93"
+    },
+    {
+      "from": "ROBBERY",
+      "to": "COUNTERFIETING",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.87"
+    },
+    {
+      "from": "BURGLARY",
+      "to": "THEFT",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.95"
+    },
+    {
+      "from": "BURGLARY",
+      "to": "AUTO_THEFT",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.89"
+    },
+    {
+      "from": "BURGLARY",
+      "to": "CHEATING",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.90"
+    },
+    {
+      "from": "BURGLARY",
+      "to": "ARSON",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.91"
+    },
+    {
+      "from": "BURGLARY",
+      "to": "DOWRY_DEATHS",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.98"
+    },
+    {
+      "from": "BURGLARY",
+      "to": "ASSAULT_ON_WOMEN_WITH_INTENT_TO_OUTRAGE_HER_MODESTY",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.92"
+    },
+    {
+      "from": "BURGLARY",
+      "to": "CRUELTY_BY_HUSBAND_OR_HIS_RELATIVES",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.93"
+    },
+    {
+      "from": "BURGLARY",
+      "to": "RIOTS",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.97"
+    },
+    {
+      "from": "BURGLARY",
+      "to": "CAUSING_DEATH_BY_NEGLIGENCE",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.80"
+    },
+    {
+      "from": "BURGLARY",
+      "to": "HURT_GREVIOUS_HURT",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.99"
+    },
+    {
+      "from": "BURGLARY",
+      "to": "CRIMINAL_BREACH_OF_TRUST",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.99"
+    },
+    {
+      "from": "BURGLARY",
+      "to": "COUNTERFIETING",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.93"
+    },
+    {
+      "from": "THEFT",
+      "to": "AUTO_THEFT",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.98"
+    },
+    {
+      "from": "THEFT",
+      "to": "CHEATING",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.97"
+    },
+    {
+      "from": "THEFT",
+      "to": "ARSON",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.81"
+    },
+    {
+      "from": "THEFT",
+      "to": "DOWRY_DEATHS",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.93"
+    },
+    {
+      "from": "THEFT",
+      "to": "ASSAULT_ON_WOMEN_WITH_INTENT_TO_OUTRAGE_HER_MODESTY",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.89"
+    },
+    {
+      "from": "THEFT",
+      "to": "CRUELTY_BY_HUSBAND_OR_HIS_RELATIVES",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.90"
+    },
+    {
+      "from": "THEFT",
+      "to": "RIOTS",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.88"
+    },
+    {
+      "from": "THEFT",
+      "to": "CAUSING_DEATH_BY_NEGLIGENCE",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.82"
+    },
+    {
+      "from": "THEFT",
+      "to": "HURT_GREVIOUS_HURT",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.91"
+    },
+    {
+      "from": "THEFT",
+      "to": "CRIMINAL_BREACH_OF_TRUST",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.97"
+    },
+    {
+      "from": "THEFT",
+      "to": "COUNTERFIETING",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.92"
+    },
+    {
+      "from": "AUTO_THEFT",
+      "to": "CHEATING",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.98"
+    },
+    {
+      "from": "AUTO_THEFT",
+      "to": "ARSON",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.73"
+    },
+    {
+      "from": "AUTO_THEFT",
+      "to": "DOWRY_DEATHS",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.88"
+    },
+    {
+      "from": "AUTO_THEFT",
+      "to": "ASSAULT_ON_WOMEN_WITH_INTENT_TO_OUTRAGE_HER_MODESTY",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.86"
+    },
+    {
+      "from": "AUTO_THEFT",
+      "to": "CRUELTY_BY_HUSBAND_OR_HIS_RELATIVES",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.89"
+    },
+    {
+      "from": "AUTO_THEFT",
+      "to": "RIOTS",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.82"
+    },
+    {
+      "from": "AUTO_THEFT",
+      "to": "CAUSING_DEATH_BY_NEGLIGENCE",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.83"
+    },
+    {
+      "from": "AUTO_THEFT",
+      "to": "HURT_GREVIOUS_HURT",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.84"
+    },
+    {
+      "from": "AUTO_THEFT",
+      "to": "CRIMINAL_BREACH_OF_TRUST",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.91"
+    },
+    {
+      "from": "AUTO_THEFT",
+      "to": "COUNTERFIETING",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.88"
+    },
+    {
+      "from": "CHEATING",
+      "to": "ARSON",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.77"
+    },
+    {
+      "from": "CHEATING",
+      "to": "DOWRY_DEATHS",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.89"
+    },
+    {
+      "from": "CHEATING",
+      "to": "ASSAULT_ON_WOMEN_WITH_INTENT_TO_OUTRAGE_HER_MODESTY",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.90"
+    },
+    {
+      "from": "CHEATING",
+      "to": "CRUELTY_BY_HUSBAND_OR_HIS_RELATIVES",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.91"
+    },
+    {
+      "from": "CHEATING",
+      "to": "RIOTS",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.85"
+    },
+    {
+      "from": "CHEATING",
+      "to": "CAUSING_DEATH_BY_NEGLIGENCE",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.86"
+    },
+    {
+      "from": "CHEATING",
+      "to": "HURT_GREVIOUS_HURT",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.87"
+    },
+    {
+      "from": "CHEATING",
+      "to": "CRIMINAL_BREACH_OF_TRUST",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.92"
+    },
+    {
+      "from": "CHEATING",
+      "to": "COUNTERFIETING",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.87"
+    },
+    {
+      "from": "ARSON",
+      "to": "DOWRY_DEATHS",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.91"
+    },
+    {
+      "from": "ARSON",
+      "to": "ASSAULT_ON_WOMEN_WITH_INTENT_TO_OUTRAGE_HER_MODESTY",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.90"
+    },
+    {
+      "from": "ARSON",
+      "to": "CRUELTY_BY_HUSBAND_OR_HIS_RELATIVES",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.89"
+    },
+    {
+      "from": "ARSON",
+      "to": "RIOTS",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.95"
+    },
+    {
+      "from": "ARSON",
+      "to": "CAUSING_DEATH_BY_NEGLIGENCE",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.74"
+    },
+    {
+      "from": "ARSON",
+      "to": "HURT_GREVIOUS_HURT",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.94"
+    },
+    {
+      "from": "ARSON",
+      "to": "CRIMINAL_BREACH_OF_TRUST",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.87"
+    },
+    {
+      "from": "ARSON",
+      "to": "COUNTERFIETING",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.80"
+    },
+    {
+      "from": "DOWRY_DEATHS",
+      "to": "ASSAULT_ON_WOMEN_WITH_INTENT_TO_OUTRAGE_HER_MODESTY",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.94"
+    },
+    {
+      "from": "DOWRY_DEATHS",
+      "to": "CRUELTY_BY_HUSBAND_OR_HIS_RELATIVES",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.95"
+    },
+    {
+      "from": "DOWRY_DEATHS",
+      "to": "RIOTS",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.97"
+    },
+    {
+      "from": "DOWRY_DEATHS",
+      "to": "CAUSING_DEATH_BY_NEGLIGENCE",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.82"
+    },
+    {
+      "from": "DOWRY_DEATHS",
+      "to": "HURT_GREVIOUS_HURT",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.98"
+    },
+    {
+      "from": "DOWRY_DEATHS",
+      "to": "CRIMINAL_BREACH_OF_TRUST",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.96"
+    },
+    {
+      "from": "DOWRY_DEATHS",
+      "to": "COUNTERFIETING",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.88"
+    },
+    {
+      "from": "ASSAULT_ON_WOMEN_WITH_INTENT_TO_OUTRAGE_HER_MODESTY",
+      "to": "CRUELTY_BY_HUSBAND_OR_HIS_RELATIVES",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.98"
+    },
+    {
+      "from": "ASSAULT_ON_WOMEN_WITH_INTENT_TO_OUTRAGE_HER_MODESTY",
+      "to": "RIOTS",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.96"
+    },
+    {
+      "from": "ASSAULT_ON_WOMEN_WITH_INTENT_TO_OUTRAGE_HER_MODESTY",
+      "to": "CAUSING_DEATH_BY_NEGLIGENCE",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.90"
+    },
+    {
+      "from": "ASSAULT_ON_WOMEN_WITH_INTENT_TO_OUTRAGE_HER_MODESTY",
+      "to": "HURT_GREVIOUS_HURT",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.94"
+    },
+    {
+      "from": "ASSAULT_ON_WOMEN_WITH_INTENT_TO_OUTRAGE_HER_MODESTY",
+      "to": "CRIMINAL_BREACH_OF_TRUST",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.89"
+    },
+    {
+      "from": "ASSAULT_ON_WOMEN_WITH_INTENT_TO_OUTRAGE_HER_MODESTY",
+      "to": "COUNTERFIETING",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.80"
+    },
+    {
+      "from": "CRUELTY_BY_HUSBAND_OR_HIS_RELATIVES",
+      "to": "RIOTS",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.96"
+    },
+    {
+      "from": "CRUELTY_BY_HUSBAND_OR_HIS_RELATIVES",
+      "to": "CAUSING_DEATH_BY_NEGLIGENCE",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.89"
+    },
+    {
+      "from": "CRUELTY_BY_HUSBAND_OR_HIS_RELATIVES",
+      "to": "HURT_GREVIOUS_HURT",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.94"
+    },
+    {
+      "from": "CRUELTY_BY_HUSBAND_OR_HIS_RELATIVES",
+      "to": "CRIMINAL_BREACH_OF_TRUST",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.90"
+    },
+    {
+      "from": "CRUELTY_BY_HUSBAND_OR_HIS_RELATIVES",
+      "to": "COUNTERFIETING",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.83"
+    },
+    {
+      "from": "RIOTS",
+      "to": "CAUSING_DEATH_BY_NEGLIGENCE",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.83"
+    },
+    {
+      "from": "RIOTS",
+      "to": "HURT_GREVIOUS_HURT",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.99"
+    },
+    {
+      "from": "RIOTS",
+      "to": "CRIMINAL_BREACH_OF_TRUST",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.93"
+    },
+    {
+      "from": "RIOTS",
+      "to": "COUNTERFIETING",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.85"
+    },
+    {
+      "from": "CAUSING_DEATH_BY_NEGLIGENCE",
+      "to": "HURT_GREVIOUS_HURT",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.79"
+    },
+    {
+      "from": "CAUSING_DEATH_BY_NEGLIGENCE",
+      "to": "CRIMINAL_BREACH_OF_TRUST",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.78"
+    },
+    {
+      "from": "HURT_GREVIOUS_HURT",
+      "to": "CRIMINAL_BREACH_OF_TRUST",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.96"
+    },
+    {
+      "from": "HURT_GREVIOUS_HURT",
+      "to": "COUNTERFIETING",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.89"
+    },
+    {
+      "from": "CRIMINAL_BREACH_OF_TRUST",
+      "to": "COUNTERFIETING",
+      "weight": 0,
+      "color": "#f85149",
+      "title": "r = 0.95"
+    }
+  ]
+}

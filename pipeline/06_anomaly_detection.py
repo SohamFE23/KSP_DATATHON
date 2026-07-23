@@ -1,4 +1,4 @@
-﻿"""
+"""
 PIPELINE STEP 06 ??? Anomaly Detection (IsolationForest)
 =======================================================
 Input : data/processed/district_features.csv  OR  karnataka_clean.csv
@@ -150,7 +150,16 @@ def main():
     print("="*60)
 
     df = load_data()
-    print(f"  [DATA] Shape: {df.shape}")
+
+    # Remove aggregate/junk rows (not real districts)
+    junk_kw = ["TOTAL", "ZZ", "RAILWAY", "STATE", "UT TOTAL"]
+    dist_col_check = "DISTRICT" if "DISTRICT" in df.columns else df.columns[1]
+    before = len(df)
+    df = df[~df[dist_col_check].astype(str).str.upper().str.contains(
+        "|".join(junk_kw), na=False
+    )]
+    print(f"  [FILTER] Removed {before - len(df)} aggregate rows. Real districts: {df[dist_col_check].nunique()}")
+    print(f"  [DATA] Shape after filter: {df.shape}")
 
     df = detect_anomalies(df)
 

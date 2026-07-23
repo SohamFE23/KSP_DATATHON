@@ -1,0 +1,127 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 600px;
+                 background-color: #0d1117;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"font": {"color": "#e6edf3"}, "group": "Violent", "id": "MURDER", "label": "Murder", "shape": "dot", "size": 40}, {"font": {"color": "#e6edf3"}, "group": "Violent", "id": "RAPE", "label": "Rape", "shape": "dot", "size": 36}, {"font": {"color": "#e6edf3"}, "group": "Violent", "id": "KIDNAPPING_ABDUCTION", "label": "Kidnapping Abduction", "shape": "dot", "size": 38}, {"font": {"color": "#e6edf3"}, "group": "Violent", "id": "DACOITY", "label": "Dacoity", "shape": "dot", "size": 33}, {"font": {"color": "#e6edf3"}, "group": "Violent", "id": "ROBBERY", "label": "Robbery", "shape": "dot", "size": 39}, {"font": {"color": "#e6edf3"}, "group": "Property", "id": "BURGLARY", "label": "Burglary", "shape": "dot", "size": 43}, {"font": {"color": "#e6edf3"}, "group": "Property", "id": "THEFT", "label": "Theft", "shape": "dot", "size": 46}, {"font": {"color": "#e6edf3"}, "group": "Property", "id": "AUTO_THEFT", "label": "Auto Theft", "shape": "dot", "size": 44}, {"font": {"color": "#e6edf3"}, "group": "Property", "id": "CHEATING", "label": "Cheating", "shape": "dot", "size": 42}, {"font": {"color": "#e6edf3"}, "group": "Violent", "id": "ARSON", "label": "Arson", "shape": "dot", "size": 34}, {"font": {"color": "#e6edf3"}, "group": "Women", "id": "DOWRY_DEATHS", "label": "Dowry Deaths", "shape": "dot", "size": 34}, {"font": {"color": "#e6edf3"}, "group": "Women", "id": "ASSAULT_ON_WOMEN_WITH_INTENT_TO_OUTRAGE_HER_MODESTY", "label": "Assault On Women Wit", "shape": "dot", "size": 40}, {"font": {"color": "#e6edf3"}, "group": "Women", "id": "CRUELTY_BY_HUSBAND_OR_HIS_RELATIVES", "label": "Cruelty By Husband O", "shape": "dot", "size": 41}, {"font": {"color": "#e6edf3"}, "group": "Social", "id": "RIOTS", "label": "Riots", "shape": "dot", "size": 44}, {"font": {"color": "#e6edf3"}, "group": "Social", "id": "CAUSING_DEATH_BY_NEGLIGENCE", "label": "Causing Death By Neg", "shape": "dot", "size": 36}, {"font": {"color": "#e6edf3"}, "group": "Social", "id": "HURT_GREVIOUS_HURT", "label": "Hurt Grevious Hurt", "shape": "dot", "size": 47}, {"font": {"color": "#e6edf3"}, "group": "Property", "id": "CRIMINAL_BREACH_OF_TRUST", "label": "Criminal Breach Of T", "shape": "dot", "size": 36}, {"font": {"color": "#e6edf3"}, "group": "Property", "id": "COUNTERFIETING", "label": "Counterfieting", "shape": "dot", "size": 32}]);
+                  edges = new vis.DataSet([{"color": "#f85149", "from": "MURDER", "title": "r = 0.92", "to": "RAPE", "width": 0.92}, {"color": "#f85149", "from": "MURDER", "title": "r = 0.89", "to": "KIDNAPPING_ABDUCTION", "width": 0.89}, {"color": "#f85149", "from": "MURDER", "title": "r = 0.98", "to": "DACOITY", "width": 0.98}, {"color": "#f85149", "from": "MURDER", "title": "r = 0.93", "to": "ROBBERY", "width": 0.93}, {"color": "#f85149", "from": "MURDER", "title": "r = 0.98", "to": "BURGLARY", "width": 0.98}, {"color": "#f85149", "from": "MURDER", "title": "r = 0.92", "to": "THEFT", "width": 0.92}, {"color": "#f85149", "from": "MURDER", "title": "r = 0.86", "to": "AUTO_THEFT", "width": 0.86}, {"color": "#f85149", "from": "MURDER", "title": "r = 0.88", "to": "CHEATING", "width": 0.88}, {"color": "#f85149", "from": "MURDER", "title": "r = 0.94", "to": "ARSON", "width": 0.94}, {"color": "#f85149", "from": "MURDER", "title": "r = 0.99", "to": "DOWRY_DEATHS", "width": 0.99}, {"color": "#f85149", "from": "MURDER", "title": "r = 0.95", "to": "ASSAULT_ON_WOMEN_WITH_INTENT_TO_OUTRAGE_HER_MODESTY", "width": 0.95}, {"color": "#f85149", "from": "MURDER", "title": "r = 0.96", "to": "CRUELTY_BY_HUSBAND_OR_HIS_RELATIVES", "width": 0.96}, {"color": "#f85149", "from": "MURDER", "title": "r = 0.99", "to": "RIOTS", "width": 0.99}, {"color": "#f85149", "from": "MURDER", "title": "r = 0.83", "to": "CAUSING_DEATH_BY_NEGLIGENCE", "width": 0.83}, {"color": "#f85149", "from": "MURDER", "title": "r = 0.99", "to": "HURT_GREVIOUS_HURT", "width": 0.99}, {"color": "#f85149", "from": "MURDER", "title": "r = 0.95", "to": "CRIMINAL_BREACH_OF_TRUST", "width": 0.95}, {"color": "#f85149", "from": "MURDER", "title": "r = 0.89", "to": "COUNTERFIETING", "width": 0.89}, {"color": "#f85149", "from": "RAPE", "title": "r = 0.96", "to": "KIDNAPPING_ABDUCTION", "width": 0.96}, {"color": "#f85149", "from": "RAPE", "title": "r = 0.93", "to": "DACOITY", "width": 0.93}, {"color": "#f85149", "from": "RAPE", "title": "r = 0.94", "to": "ROBBERY", "width": 0.94}, {"color": "#f85149", "from": "RAPE", "title": "r = 0.89", "to": "BURGLARY", "width": 0.89}, {"color": "#f85149", "from": "RAPE", "title": "r = 0.87", "to": "THEFT", "width": 0.87}, {"color": "#f85149", "from": "RAPE", "title": "r = 0.86", "to": "AUTO_THEFT", "width": 0.86}, {"color": "#f85149", "from": "RAPE", "title": "r = 0.90", "to": "CHEATING", "width": 0.9}, {"color": "#f85149", "from": "RAPE", "title": "r = 0.85", "to": "ARSON", "width": 0.85}, {"color": "#f85149", "from": "RAPE", "title": "r = 0.92", "to": "DOWRY_DEATHS", "width": 0.92}, {"color": "#f85149", "from": "RAPE", "title": "r = 0.99", "to": "ASSAULT_ON_WOMEN_WITH_INTENT_TO_OUTRAGE_HER_MODESTY", "width": 0.99}, {"color": "#f85149", "from": "RAPE", "title": "r = 0.96", "to": "CRUELTY_BY_HUSBAND_OR_HIS_RELATIVES", "width": 0.96}, {"color": "#f85149", "from": "RAPE", "title": "r = 0.93", "to": "RIOTS", "width": 0.93}, {"color": "#f85149", "from": "RAPE", "title": "r = 0.90", "to": "CAUSING_DEATH_BY_NEGLIGENCE", "width": 0.9}, {"color": "#f85149", "from": "RAPE", "title": "r = 0.90", "to": "HURT_GREVIOUS_HURT", "width": 0.9}, {"color": "#f85149", "from": "RAPE", "title": "r = 0.87", "to": "CRIMINAL_BREACH_OF_TRUST", "width": 0.87}, {"color": "#f85149", "from": "RAPE", "title": "r = 0.76", "to": "COUNTERFIETING", "width": 0.76}, {"color": "#f85149", "from": "KIDNAPPING_ABDUCTION", "title": "r = 0.91", "to": "DACOITY", "width": 0.91}, {"color": "#f85149", "from": "KIDNAPPING_ABDUCTION", "title": "r = 0.96", "to": "ROBBERY", "width": 0.96}, {"color": "#f85149", "from": "KIDNAPPING_ABDUCTION", "title": "r = 0.88", "to": "BURGLARY", "width": 0.88}, {"color": "#f85149", "from": "KIDNAPPING_ABDUCTION", "title": "r = 0.91", "to": "THEFT", "width": 0.91}, {"color": "#f85149", "from": "KIDNAPPING_ABDUCTION", "title": "r = 0.92", "to": "AUTO_THEFT", "width": 0.92}, {"color": "#f85149", "from": "KIDNAPPING_ABDUCTION", "title": "r = 0.96", "to": "CHEATING", "width": 0.96}, {"color": "#f85149", "from": "KIDNAPPING_ABDUCTION", "title": "r = 0.81", "to": "ARSON", "width": 0.81}, {"color": "#f85149", "from": "KIDNAPPING_ABDUCTION", "title": "r = 0.89", "to": "DOWRY_DEATHS", "width": 0.89}, {"color": "#f85149", "from": "KIDNAPPING_ABDUCTION", "title": "r = 0.96", "to": "ASSAULT_ON_WOMEN_WITH_INTENT_TO_OUTRAGE_HER_MODESTY", "width": 0.96}, {"color": "#f85149", "from": "KIDNAPPING_ABDUCTION", "title": "r = 0.95", "to": "CRUELTY_BY_HUSBAND_OR_HIS_RELATIVES", "width": 0.95}, {"color": "#f85149", "from": "KIDNAPPING_ABDUCTION", "title": "r = 0.89", "to": "RIOTS", "width": 0.89}, {"color": "#f85149", "from": "KIDNAPPING_ABDUCTION", "title": "r = 0.89", "to": "CAUSING_DEATH_BY_NEGLIGENCE", "width": 0.89}, {"color": "#f85149", "from": "KIDNAPPING_ABDUCTION", "title": "r = 0.87", "to": "HURT_GREVIOUS_HURT", "width": 0.87}, {"color": "#f85149", "from": "KIDNAPPING_ABDUCTION", "title": "r = 0.87", "to": "CRIMINAL_BREACH_OF_TRUST", "width": 0.87}, {"color": "#f85149", "from": "KIDNAPPING_ABDUCTION", "title": "r = 0.78", "to": "COUNTERFIETING", "width": 0.78}, {"color": "#f85149", "from": "DACOITY", "title": "r = 0.95", "to": "ROBBERY", "width": 0.95}, {"color": "#f85149", "from": "DACOITY", "title": "r = 0.97", "to": "BURGLARY", "width": 0.97}, {"color": "#f85149", "from": "DACOITY", "title": "r = 0.94", "to": "THEFT", "width": 0.94}, {"color": "#f85149", "from": "DACOITY", "title": "r = 0.90", "to": "AUTO_THEFT", "width": 0.9}, {"color": "#f85149", "from": "DACOITY", "title": "r = 0.91", "to": "CHEATING", "width": 0.91}, {"color": "#f85149", "from": "DACOITY", "title": "r = 0.91", "to": "ARSON", "width": 0.91}, {"color": "#f85149", "from": "DACOITY", "title": "r = 0.98", "to": "DOWRY_DEATHS", "width": 0.98}, {"color": "#f85149", "from": "DACOITY", "title": "r = 0.95", "to": "ASSAULT_ON_WOMEN_WITH_INTENT_TO_OUTRAGE_HER_MODESTY", "width": 0.95}, {"color": "#f85149", "from": "DACOITY", "title": "r = 0.96", "to": "CRUELTY_BY_HUSBAND_OR_HIS_RELATIVES", "width": 0.96}, {"color": "#f85149", "from": "DACOITY", "title": "r = 0.96", "to": "RIOTS", "width": 0.96}, {"color": "#f85149", "from": "DACOITY", "title": "r = 0.84", "to": "CAUSING_DEATH_BY_NEGLIGENCE", "width": 0.84}, {"color": "#f85149", "from": "DACOITY", "title": "r = 0.97", "to": "HURT_GREVIOUS_HURT", "width": 0.97}, {"color": "#f85149", "from": "DACOITY", "title": "r = 0.95", "to": "CRIMINAL_BREACH_OF_TRUST", "width": 0.95}, {"color": "#f85149", "from": "DACOITY", "title": "r = 0.89", "to": "COUNTERFIETING", "width": 0.89}, {"color": "#f85149", "from": "ROBBERY", "title": "r = 0.93", "to": "BURGLARY", "width": 0.93}, {"color": "#f85149", "from": "ROBBERY", "title": "r = 0.97", "to": "THEFT", "width": 0.97}, {"color": "#f85149", "from": "ROBBERY", "title": "r = 0.97", "to": "AUTO_THEFT", "width": 0.97}, {"color": "#f85149", "from": "ROBBERY", "title": "r = 0.98", "to": "CHEATING", "width": 0.98}, {"color": "#f85149", "from": "ROBBERY", "title": "r = 0.82", "to": "ARSON", "width": 0.82}, {"color": "#f85149", "from": "ROBBERY", "title": "r = 0.93", "to": "DOWRY_DEATHS", "width": 0.93}, {"color": "#f85149", "from": "ROBBERY", "title": "r = 0.94", "to": "ASSAULT_ON_WOMEN_WITH_INTENT_TO_OUTRAGE_HER_MODESTY", "width": 0.94}, {"color": "#f85149", "from": "ROBBERY", "title": "r = 0.96", "to": "CRUELTY_BY_HUSBAND_OR_HIS_RELATIVES", "width": 0.96}, {"color": "#f85149", "from": "ROBBERY", "title": "r = 0.91", "to": "RIOTS", "width": 0.91}, {"color": "#f85149", "from": "ROBBERY", "title": "r = 0.90", "to": "CAUSING_DEATH_BY_NEGLIGENCE", "width": 0.9}, {"color": "#f85149", "from": "ROBBERY", "title": "r = 0.91", "to": "HURT_GREVIOUS_HURT", "width": 0.91}, {"color": "#f85149", "from": "ROBBERY", "title": "r = 0.93", "to": "CRIMINAL_BREACH_OF_TRUST", "width": 0.93}, {"color": "#f85149", "from": "ROBBERY", "title": "r = 0.87", "to": "COUNTERFIETING", "width": 0.87}, {"color": "#f85149", "from": "BURGLARY", "title": "r = 0.95", "to": "THEFT", "width": 0.95}, {"color": "#f85149", "from": "BURGLARY", "title": "r = 0.89", "to": "AUTO_THEFT", "width": 0.89}, {"color": "#f85149", "from": "BURGLARY", "title": "r = 0.90", "to": "CHEATING", "width": 0.9}, {"color": "#f85149", "from": "BURGLARY", "title": "r = 0.91", "to": "ARSON", "width": 0.91}, {"color": "#f85149", "from": "BURGLARY", "title": "r = 0.98", "to": "DOWRY_DEATHS", "width": 0.98}, {"color": "#f85149", "from": "BURGLARY", "title": "r = 0.92", "to": "ASSAULT_ON_WOMEN_WITH_INTENT_TO_OUTRAGE_HER_MODESTY", "width": 0.92}, {"color": "#f85149", "from": "BURGLARY", "title": "r = 0.93", "to": "CRUELTY_BY_HUSBAND_OR_HIS_RELATIVES", "width": 0.93}, {"color": "#f85149", "from": "BURGLARY", "title": "r = 0.97", "to": "RIOTS", "width": 0.97}, {"color": "#f85149", "from": "BURGLARY", "title": "r = 0.80", "to": "CAUSING_DEATH_BY_NEGLIGENCE", "width": 0.8}, {"color": "#f85149", "from": "BURGLARY", "title": "r = 0.99", "to": "HURT_GREVIOUS_HURT", "width": 0.99}, {"color": "#f85149", "from": "BURGLARY", "title": "r = 0.99", "to": "CRIMINAL_BREACH_OF_TRUST", "width": 0.99}, {"color": "#f85149", "from": "BURGLARY", "title": "r = 0.93", "to": "COUNTERFIETING", "width": 0.93}, {"color": "#f85149", "from": "THEFT", "title": "r = 0.98", "to": "AUTO_THEFT", "width": 0.98}, {"color": "#f85149", "from": "THEFT", "title": "r = 0.97", "to": "CHEATING", "width": 0.97}, {"color": "#f85149", "from": "THEFT", "title": "r = 0.81", "to": "ARSON", "width": 0.81}, {"color": "#f85149", "from": "THEFT", "title": "r = 0.93", "to": "DOWRY_DEATHS", "width": 0.93}, {"color": "#f85149", "from": "THEFT", "title": "r = 0.89", "to": "ASSAULT_ON_WOMEN_WITH_INTENT_TO_OUTRAGE_HER_MODESTY", "width": 0.89}, {"color": "#f85149", "from": "THEFT", "title": "r = 0.90", "to": "CRUELTY_BY_HUSBAND_OR_HIS_RELATIVES", "width": 0.9}, {"color": "#f85149", "from": "THEFT", "title": "r = 0.88", "to": "RIOTS", "width": 0.88}, {"color": "#f85149", "from": "THEFT", "title": "r = 0.82", "to": "CAUSING_DEATH_BY_NEGLIGENCE", "width": 0.82}, {"color": "#f85149", "from": "THEFT", "title": "r = 0.91", "to": "HURT_GREVIOUS_HURT", "width": 0.91}, {"color": "#f85149", "from": "THEFT", "title": "r = 0.97", "to": "CRIMINAL_BREACH_OF_TRUST", "width": 0.97}, {"color": "#f85149", "from": "THEFT", "title": "r = 0.92", "to": "COUNTERFIETING", "width": 0.92}, {"color": "#f85149", "from": "AUTO_THEFT", "title": "r = 0.98", "to": "CHEATING", "width": 0.98}, {"color": "#f85149", "from": "AUTO_THEFT", "title": "r = 0.73", "to": "ARSON", "width": 0.73}, {"color": "#f85149", "from": "AUTO_THEFT", "title": "r = 0.88", "to": "DOWRY_DEATHS", "width": 0.88}, {"color": "#f85149", "from": "AUTO_THEFT", "title": "r = 0.86", "to": "ASSAULT_ON_WOMEN_WITH_INTENT_TO_OUTRAGE_HER_MODESTY", "width": 0.86}, {"color": "#f85149", "from": "AUTO_THEFT", "title": "r = 0.89", "to": "CRUELTY_BY_HUSBAND_OR_HIS_RELATIVES", "width": 0.89}, {"color": "#f85149", "from": "AUTO_THEFT", "title": "r = 0.82", "to": "RIOTS", "width": 0.82}, {"color": "#f85149", "from": "AUTO_THEFT", "title": "r = 0.83", "to": "CAUSING_DEATH_BY_NEGLIGENCE", "width": 0.83}, {"color": "#f85149", "from": "AUTO_THEFT", "title": "r = 0.84", "to": "HURT_GREVIOUS_HURT", "width": 0.84}, {"color": "#f85149", "from": "AUTO_THEFT", "title": "r = 0.91", "to": "CRIMINAL_BREACH_OF_TRUST", "width": 0.91}, {"color": "#f85149", "from": "AUTO_THEFT", "title": "r = 0.88", "to": "COUNTERFIETING", "width": 0.88}, {"color": "#f85149", "from": "CHEATING", "title": "r = 0.77", "to": "ARSON", "width": 0.77}, {"color": "#f85149", "from": "CHEATING", "title": "r = 0.89", "to": "DOWRY_DEATHS", "width": 0.89}, {"color": "#f85149", "from": "CHEATING", "title": "r = 0.90", "to": "ASSAULT_ON_WOMEN_WITH_INTENT_TO_OUTRAGE_HER_MODESTY", "width": 0.9}, {"color": "#f85149", "from": "CHEATING", "title": "r = 0.91", "to": "CRUELTY_BY_HUSBAND_OR_HIS_RELATIVES", "width": 0.91}, {"color": "#f85149", "from": "CHEATING", "title": "r = 0.85", "to": "RIOTS", "width": 0.85}, {"color": "#f85149", "from": "CHEATING", "title": "r = 0.86", "to": "CAUSING_DEATH_BY_NEGLIGENCE", "width": 0.86}, {"color": "#f85149", "from": "CHEATING", "title": "r = 0.87", "to": "HURT_GREVIOUS_HURT", "width": 0.87}, {"color": "#f85149", "from": "CHEATING", "title": "r = 0.92", "to": "CRIMINAL_BREACH_OF_TRUST", "width": 0.92}, {"color": "#f85149", "from": "CHEATING", "title": "r = 0.87", "to": "COUNTERFIETING", "width": 0.87}, {"color": "#f85149", "from": "ARSON", "title": "r = 0.91", "to": "DOWRY_DEATHS", "width": 0.91}, {"color": "#f85149", "from": "ARSON", "title": "r = 0.90", "to": "ASSAULT_ON_WOMEN_WITH_INTENT_TO_OUTRAGE_HER_MODESTY", "width": 0.9}, {"color": "#f85149", "from": "ARSON", "title": "r = 0.89", "to": "CRUELTY_BY_HUSBAND_OR_HIS_RELATIVES", "width": 0.89}, {"color": "#f85149", "from": "ARSON", "title": "r = 0.95", "to": "RIOTS", "width": 0.95}, {"color": "#f85149", "from": "ARSON", "title": "r = 0.74", "to": "CAUSING_DEATH_BY_NEGLIGENCE", "width": 0.74}, {"color": "#f85149", "from": "ARSON", "title": "r = 0.94", "to": "HURT_GREVIOUS_HURT", "width": 0.94}, {"color": "#f85149", "from": "ARSON", "title": "r = 0.87", "to": "CRIMINAL_BREACH_OF_TRUST", "width": 0.87}, {"color": "#f85149", "from": "ARSON", "title": "r = 0.80", "to": "COUNTERFIETING", "width": 0.8}, {"color": "#f85149", "from": "DOWRY_DEATHS", "title": "r = 0.94", "to": "ASSAULT_ON_WOMEN_WITH_INTENT_TO_OUTRAGE_HER_MODESTY", "width": 0.94}, {"color": "#f85149", "from": "DOWRY_DEATHS", "title": "r = 0.95", "to": "CRUELTY_BY_HUSBAND_OR_HIS_RELATIVES", "width": 0.95}, {"color": "#f85149", "from": "DOWRY_DEATHS", "title": "r = 0.97", "to": "RIOTS", "width": 0.97}, {"color": "#f85149", "from": "DOWRY_DEATHS", "title": "r = 0.82", "to": "CAUSING_DEATH_BY_NEGLIGENCE", "width": 0.82}, {"color": "#f85149", "from": "DOWRY_DEATHS", "title": "r = 0.98", "to": "HURT_GREVIOUS_HURT", "width": 0.98}, {"color": "#f85149", "from": "DOWRY_DEATHS", "title": "r = 0.96", "to": "CRIMINAL_BREACH_OF_TRUST", "width": 0.96}, {"color": "#f85149", "from": "DOWRY_DEATHS", "title": "r = 0.88", "to": "COUNTERFIETING", "width": 0.88}, {"color": "#f85149", "from": "ASSAULT_ON_WOMEN_WITH_INTENT_TO_OUTRAGE_HER_MODESTY", "title": "r = 0.98", "to": "CRUELTY_BY_HUSBAND_OR_HIS_RELATIVES", "width": 0.98}, {"color": "#f85149", "from": "ASSAULT_ON_WOMEN_WITH_INTENT_TO_OUTRAGE_HER_MODESTY", "title": "r = 0.96", "to": "RIOTS", "width": 0.96}, {"color": "#f85149", "from": "ASSAULT_ON_WOMEN_WITH_INTENT_TO_OUTRAGE_HER_MODESTY", "title": "r = 0.90", "to": "CAUSING_DEATH_BY_NEGLIGENCE", "width": 0.9}, {"color": "#f85149", "from": "ASSAULT_ON_WOMEN_WITH_INTENT_TO_OUTRAGE_HER_MODESTY", "title": "r = 0.94", "to": "HURT_GREVIOUS_HURT", "width": 0.94}, {"color": "#f85149", "from": "ASSAULT_ON_WOMEN_WITH_INTENT_TO_OUTRAGE_HER_MODESTY", "title": "r = 0.89", "to": "CRIMINAL_BREACH_OF_TRUST", "width": 0.89}, {"color": "#f85149", "from": "ASSAULT_ON_WOMEN_WITH_INTENT_TO_OUTRAGE_HER_MODESTY", "title": "r = 0.80", "to": "COUNTERFIETING", "width": 0.8}, {"color": "#f85149", "from": "CRUELTY_BY_HUSBAND_OR_HIS_RELATIVES", "title": "r = 0.96", "to": "RIOTS", "width": 0.96}, {"color": "#f85149", "from": "CRUELTY_BY_HUSBAND_OR_HIS_RELATIVES", "title": "r = 0.89", "to": "CAUSING_DEATH_BY_NEGLIGENCE", "width": 0.89}, {"color": "#f85149", "from": "CRUELTY_BY_HUSBAND_OR_HIS_RELATIVES", "title": "r = 0.94", "to": "HURT_GREVIOUS_HURT", "width": 0.94}, {"color": "#f85149", "from": "CRUELTY_BY_HUSBAND_OR_HIS_RELATIVES", "title": "r = 0.90", "to": "CRIMINAL_BREACH_OF_TRUST", "width": 0.9}, {"color": "#f85149", "from": "CRUELTY_BY_HUSBAND_OR_HIS_RELATIVES", "title": "r = 0.83", "to": "COUNTERFIETING", "width": 0.83}, {"color": "#f85149", "from": "RIOTS", "title": "r = 0.83", "to": "CAUSING_DEATH_BY_NEGLIGENCE", "width": 0.83}, {"color": "#f85149", "from": "RIOTS", "title": "r = 0.99", "to": "HURT_GREVIOUS_HURT", "width": 0.99}, {"color": "#f85149", "from": "RIOTS", "title": "r = 0.93", "to": "CRIMINAL_BREACH_OF_TRUST", "width": 0.93}, {"color": "#f85149", "from": "RIOTS", "title": "r = 0.85", "to": "COUNTERFIETING", "width": 0.85}, {"color": "#f85149", "from": "CAUSING_DEATH_BY_NEGLIGENCE", "title": "r = 0.79", "to": "HURT_GREVIOUS_HURT", "width": 0.79}, {"color": "#f85149", "from": "CAUSING_DEATH_BY_NEGLIGENCE", "title": "r = 0.78", "to": "CRIMINAL_BREACH_OF_TRUST", "width": 0.78}, {"color": "#f85149", "from": "HURT_GREVIOUS_HURT", "title": "r = 0.96", "to": "CRIMINAL_BREACH_OF_TRUST", "width": 0.96}, {"color": "#f85149", "from": "HURT_GREVIOUS_HURT", "title": "r = 0.89", "to": "COUNTERFIETING", "width": 0.89}, {"color": "#f85149", "from": "CRIMINAL_BREACH_OF_TRUST", "title": "r = 0.95", "to": "COUNTERFIETING", "width": 0.95}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {"physics": {"barnesHut": {"gravitationalConstant": -8000, "centralGravity": 0.3, "springLength": 120}, "minVelocity": 0.75}, "interaction": {"hover": true, "tooltipDelay": 200}};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>
