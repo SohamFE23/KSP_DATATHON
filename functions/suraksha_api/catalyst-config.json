@@ -4,5 +4,9 @@
   "stack": "python3.10",
   "execution": {
     "main": "main.py"
-  }
+  },
+  "ignore": [
+    "__pycache__",
+    "*.pyc"
+  ]
 }
