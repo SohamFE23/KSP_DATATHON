@@ -1,0 +1,121 @@
+Area_Name,Year,Group_Name,Sub_Group_Name,Rank_All_Ranks_Total,Rank_ASI_Equivalent,Rank_ASPDySPAssttCommandant,Rank_Below_HC_and_Above_Constables,Rank_Constables,Rank_DGAddl_DG,Rank_DIG,Rank_Head_Constables,Rank_IGSplIG,Rank_Inspectors_Equivalent,Rank_SI_Equivalent,Rank_SSPSPAddlSPCommandant
+0.0,2001,Actual Police Strength - Armed Police,A2. Acual Armed Police (Incl. Women Police),1020,36,2,0,792,0,0,165,0,5,20,0
+0.0,2002,Actual Police Strength - Armed Police,A2. Acual Armed Police (Incl. Women Police),2462,76,4,0,1916,0,0,411,0,12,43,0
+0.0,2003,Actual Police Strength - Armed Police,A2. Acual Armed Police (Incl. Women Police),3157,101,4,0,2434,0,0,546,0,15,57,0
+0.0,2004,Actual Police Strength - Armed Police,A2. Acual Armed Police (Incl. Women Police),3592,105,5,0,2776,0,0,633,0,13,60,0
+0.0,2005,Actual Police Strength - Armed Police,A2. Acual Armed Police (Incl. Women Police),3772,106,6,0,2938,0,0,650,0,13,59,0
+0.0,2006,Actual Police Strength - Armed Police,A2. Acual Armed Police (Incl. Women Police),4041,117,6,0,3121,0,0,726,0,12,59,0
+0.0,2007,Actual Police Strength - Armed Police,A2. Acual Armed Police (Incl. Women Police),4044,116,5,0,3118,0,0,737,0,12,56,0
+0.0,2008,Actual Police Strength - Armed Police,A2. Acual Armed Police (Incl. Women Police),9675,101,0,0,7636,1,1,1694,1,118,109,14
+0.0,2009,Actual Police Strength - Armed Police,A2. Acual Armed Police (Incl. Women Police),9715,101,40,0,7636,1,1,1694,1,118,109,14
+0.0,2010,Actual Police Strength - Armed Police,A2. Acual Armed Police (Incl. Women Police),7908,84,34,0,5650,1,1,1915,1,73,131,18
+0.0,2001,Actual Police Strength - Civil Police,A1. Actual Civil Police (Incl. District Armed Police and Women Police),49354,2487,171,0,33621,2,4,10791,3,572,1639,64
+0.0,2002,Actual Police Strength - Civil Police,A1. Actual Civil Police (Incl. District Armed Police and Women Police),49685,2504,175,0,33679,2,3,11010,5,618,1623,66
+0.0,2003,Actual Police Strength - Civil Police,A1. Actual Civil Police (Incl. District Armed Police and Women Police),48942,2567,174,0,33208,2,4,10704,5,622,1590,66
+0.0,2004,Actual Police Strength - Civil Police,A1. Actual Civil Police (Incl. District Armed Police and Women Police),49727,2600,172,0,33768,2,3,10850,6,610,1649,67
+0.0,2005,Actual Police Strength - Civil Police,A1. Actual Civil Police (Incl. District Armed Police and Women Police),50634,2636,174,0,34543,1,4,10908,6,606,1688,68
+0.0,2006,Actual Police Strength - Civil Police,A1. Actual Civil Police (Incl. District Armed Police and Women Police),48011,2595,167,0,32160,1,2,10748,8,597,1667,66
+0.0,2007,Actual Police Strength - Civil Police,A1. Actual Civil Police (Incl. District Armed Police and Women Police),49248,2672,165,0,32736,1,3,11282,7,610,1706,66
+0.0,2008,Actual Police Strength - Civil Police,A1. Actual Civil Police (Incl. District Armed Police and Women Police),65662,3645,360,0,43529,16,25,14772,34,964,2156,161
+0.0,2009,Actual Police Strength - Civil Police,A1. Actual Civil Police (Incl. District Armed Police and Women Police),65627,3645,320,0,43529,16,34,14772,30,964,2156,161
+0.0,2010,Actual Police Strength - Civil Police,A1. Actual Civil Police (Incl. District Armed Police and Women Police),63689,3740,353,0,39423,25,17,16846,26,1001,2117,141
+0.0,2001,Actual Police Strength - Total,A3. Actual Police Strength (Incl. Women),50374,2523,173,0,34413,2,4,10956,3,577,1659,64
+0.0,2002,Actual Police Strength - Total,A3. Actual Police Strength (Incl. Women),52147,2580,179,0,35595,2,3,11421,5,630,1666,66
+0.0,2003,Actual Police Strength - Total,A3. Actual Police Strength (Incl. Women),52099,2668,178,0,35642,2,4,11250,5,637,1647,66
+0.0,2004,Actual Police Strength - Total,A3. Actual Police Strength (Incl. Women),53319,2705,177,0,36544,2,3,11483,6,623,1709,67
+0.0,2005,Actual Police Strength - Total,A3. Actual Police Strength (Incl. Women),54406,2742,180,0,37481,1,4,11558,6,619,1747,68
+0.0,2006,Actual Police Strength - Total,A3. Actual Police Strength (Incl. Women),52052,2712,173,0,35281,1,2,11474,8,609,1726,66
+0.0,2007,Actual Police Strength - Total,A3. Actual Police Strength (Incl. Women),53292,2788,170,0,35854,1,3,12019,7,622,1762,66
+0.0,2008,Actual Police Strength - Total,A3. Actual Police Strength (Incl. Women),75337,3746,360,0,51165,17,26,16466,35,1082,2265,175
+0.0,2009,Actual Police Strength - Total,A3. Actual Police Strength (Incl. Women),75342,3746,360,0,51165,17,35,16466,31,1082,2265,175
+0.0,2010,Actual Police Strength - Total,A3. Actual Police Strength (Incl. Women),71597,3824,387,0,45073,26,18,18761,27,1074,2248,159
+0.0,2001,Actual Women Police Strength - Armed Police,B2. Actual Women Armed Police,0,0,0,0,0,0,0,0,0,0,0,0
+0.0,2002,Actual Women Police Strength - Armed Police,B2. Actual Women Armed Police,0,0,0,0,0,0,0,0,0,0,0,0
+0.0,2003,Actual Women Police Strength - Armed Police,B2. Actual Women Armed Police,20,0,0,0,15,0,0,5,0,0,0,0
+0.0,2004,Actual Women Police Strength - Armed Police,B2. Actual Women Armed Police,854,25,1,0,670,0,0,141,0,2,15,0
+0.0,2005,Actual Women Police Strength - Armed Police,B2. Actual Women Armed Police,420,8,1,0,330,0,0,73,0,1,7,0
+0.0,2006,Actual Women Police Strength - Armed Police,B2. Actual Women Armed Police,20,0,0,0,15,0,0,5,0,0,0,0
+0.0,2007,Actual Women Police Strength - Armed Police,B2. Actual Women Armed Police,0,0,0,0,0,0,0,0,0,0,0,0
+0.0,2008,Actual Women Police Strength - Armed Police,B2. Actual Women Armed Police,0,0,0,0,0,0,0,0,0,0,0,0
+0.0,2009,Actual Women Police Strength - Armed Police,B2. Actual Women Armed Police,0,0,0,0,0,0,0,0,0,0,0,0
+0.0,2010,Actual Women Police Strength - Armed Police,B2. Actual Women Armed Police,0,0,0,0,0,0,0,0,0,0,0,0
+0.0,2001,Actual Women Police Strength - Civil Police,B1. Acual Women Civil Police (Incl. District Armed Force),1174,11,0,0,813,0,0,318,0,2,30,0
+0.0,2002,Actual Women Police Strength - Civil Police,B1. Acual Women Civil Police (Incl. District Armed Force),1569,25,0,0,1135,0,0,371,0,2,36,0
+0.0,2003,Actual Women Police Strength - Civil Police,B1. Acual Women Civil Police (Incl. District Armed Force),2772,121,4,0,1867,0,0,694,0,19,65,2
+0.0,2004,Actual Women Police Strength - Civil Police,B1. Acual Women Civil Police (Incl. District Armed Force),4183,190,7,0,2782,0,0,1061,0,34,105,4
+0.0,2005,Actual Women Police Strength - Civil Police,B1. Acual Women Civil Police (Incl. District Armed Force),3112,110,3,0,2154,0,0,755,0,16,72,2
+0.0,2006,Actual Women Police Strength - Civil Police,B1. Acual Women Civil Police (Incl. District Armed Force),3586,136,4,0,2502,0,0,838,0,19,85,2
+0.0,2007,Actual Women Police Strength - Civil Police,B1. Acual Women Civil Police (Incl. District Armed Force),3701,141,4,0,2590,0,0,857,0,21,86,2
+0.0,2008,Actual Women Police Strength - Civil Police,B1. Acual Women Civil Police (Incl. District Armed Force),1788,53,12,0,1272,1,1,380,1,30,35,3
+0.0,2009,Actual Women Police Strength - Civil Police,B1. Acual Women Civil Police (Incl. District Armed Force),4647,186,12,0,3368,1,2,942,0,31,102,3
+0.0,2010,Actual Women Police Strength - Civil Police,B1. Acual Women Civil Police (Incl. District Armed Force),0,0,0,0,0,0,0,0,0,0,0,0
+0.0,2001,Actual Women Police Strength - Total,B3. Actual Women Police Strength,1174,11,0,0,813,0,0,318,0,2,30,0
+0.0,2002,Actual Women Police Strength - Total,B3. Actual Women Police Strength,1569,25,0,0,1135,0,0,371,0,2,36,0
+0.0,2003,Actual Women Police Strength - Total,B3. Actual Women Police Strength,2792,121,4,0,1882,0,0,699,0,19,65,2
+0.0,2004,Actual Women Police Strength - Total,B3. Actual Women Police Strength,5037,215,8,0,3452,0,0,1202,0,36,120,4
+0.0,2005,Actual Women Police Strength - Total,B3. Actual Women Police Strength,3532,118,4,0,2484,0,0,828,0,17,79,2
+0.0,2006,Actual Women Police Strength - Total,B3. Actual Women Police Strength,3606,136,4,0,2517,0,0,843,0,19,85,2
+0.0,2007,Actual Women Police Strength - Total,B3. Actual Women Police Strength,3701,141,4,0,2590,0,0,857,0,21,86,2
+0.0,2008,Actual Women Police Strength - Total,B3. Actual Women Police Strength,1788,53,12,0,1272,1,1,380,1,30,35,3
+0.0,2009,Actual Women Police Strength - Total,B3. Actual Women Police Strength,4647,186,12,0,3368,1,2,942,0,31,102,3
+0.0,2010,Actual Women Police Strength - Total,B3. Actual Women Police Strength,0,0,0,0,0,0,0,0,0,0,0,0
+0.0,2001,Sanctioned Police Strength - Armed Police,C2. Santioned Armed Police (Incl. Women Police),1020,36,2,0,792,0,0,165,0,5,20,0
+0.0,2002,Sanctioned Police Strength - Armed Police,C2. Santioned Armed Police (Incl. Women Police),2573,83,5,0,1999,0,0,422,0,17,47,0
+0.0,2003,Sanctioned Police Strength - Armed Police,C2. Santioned Armed Police (Incl. Women Police),3417,100,5,0,2660,0,0,570,0,23,59,0
+0.0,2004,Sanctioned Police Strength - Armed Police,C2. Santioned Armed Police (Incl. Women Police),4183,119,7,0,3264,0,0,694,0,27,72,0
+0.0,2005,Sanctioned Police Strength - Armed Police,C2. Santioned Armed Police (Incl. Women Police),4191,119,7,0,3269,0,0,695,0,27,74,0
+0.0,2006,Sanctioned Police Strength - Armed Police,C2. Santioned Armed Police (Incl. Women Police),4314,119,7,0,3360,0,0,727,0,27,74,0
+0.0,2007,Sanctioned Police Strength - Armed Police,C2. Santioned Armed Police (Incl. Women Police),4651,119,7,0,3626,0,0,796,0,27,76,0
+0.0,2008,Sanctioned Police Strength - Armed Police,C2. Santioned Armed Police (Incl. Women Police),11534,111,48,0,8777,1,2,2173,1,111,292,18
+0.0,2009,Sanctioned Police Strength - Armed Police,C2. Santioned Armed Police (Incl. Women Police),11689,255,48,0,8777,1,2,2175,1,120,292,18
+0.0,2010,Sanctioned Police Strength - Armed Police,C2. Santioned Armed Police (Incl. Women Police),12571,130,37,0,9568,1,1,2360,1,133,319,21
+0.0,2001,Sanctioned Police Strength - Civil Police,C1. Sanctioned Civil Police (Incl. District Armed Police),56026,2728,185,0,38599,2,4,11606,4,697,2131,70
+0.0,2002,Sanctioned Police Strength - Civil Police,C1. Sanctioned Civil Police (Incl. District Armed Police),57730,2817,187,0,39908,2,4,11881,6,704,2151,70
+0.0,2003,Sanctioned Police Strength - Civil Police,C1. Sanctioned Civil Police (Incl. District Armed Police),57357,2837,184,0,39548,2,5,11842,6,703,2160,70
+0.0,2004,Sanctioned Police Strength - Civil Police,C1. Sanctioned Civil Police (Incl. District Armed Police),58038,2880,184,0,40010,2,5,11994,7,706,2180,70
+0.0,2005,Sanctioned Police Strength - Civil Police,C1. Sanctioned Civil Police (Incl. District Armed Police),58241,2883,184,0,40131,1,5,12073,8,706,2180,70
+0.0,2006,Sanctioned Police Strength - Civil Police,C1. Sanctioned Civil Police (Incl. District Armed Police),58433,2884,185,0,40286,1,5,12106,9,706,2181,70
+0.0,2007,Sanctioned Police Strength - Civil Police,C1. Sanctioned Civil Police (Incl. District Armed Police),59237,2908,188,0,40718,1,5,12419,8,708,2212,70
+0.0,2008,Sanctioned Police Strength - Civil Police,C1. Sanctioned Civil Police (Incl. District Armed Police),75034,3481,389,0,50885,17,33,15967,36,1050,3004,172
+0.0,2009,Sanctioned Police Strength - Civil Police,C1. Sanctioned Civil Police (Incl. District Armed Police),75384,3831,389,0,50885,17,37,15967,32,1050,3004,172
+0.0,2010,Sanctioned Police Strength - Civil Police,C1. Sanctioned Civil Police (Incl. District Armed Police),77799,3931,376,0,49892,27,21,19019,29,1025,3334,145
+0.0,2001,Sanctioned Police Strength - Total,C3. Santioned Police Strength (Incl. Women),57046,2764,187,0,39391,2,4,11771,4,702,2151,70
+0.0,2002,Sanctioned Police Strength - Total,C3. Santioned Police Strength (Incl. Women),60303,2900,192,0,41907,2,4,12303,6,721,2198,70
+0.0,2003,Sanctioned Police Strength - Total,C3. Santioned Police Strength (Incl. Women),60774,2937,189,0,42208,2,5,12412,6,726,2219,70
+0.0,2004,Sanctioned Police Strength - Total,C3. Santioned Police Strength (Incl. Women),62221,2999,191,0,43274,2,5,12688,7,733,2252,70
+0.0,2005,Sanctioned Police Strength - Total,C3. Santioned Police Strength (Incl. Women),62432,3002,191,0,43400,1,5,12768,8,733,2254,70
+0.0,2006,Sanctioned Police Strength - Total,C3. Santioned Police Strength (Incl. Women),62747,3003,192,0,43646,1,5,12833,9,733,2255,70
+0.0,2007,Sanctioned Police Strength - Total,C3. Santioned Police Strength (Incl. Women),63888,3027,195,0,44344,1,5,13215,8,735,2288,70
+0.0,2008,Sanctioned Police Strength - Total,C3. Santioned Police Strength (Incl. Women),86568,3592,437,0,59662,18,35,18140,37,1161,3296,190
+0.0,2009,Sanctioned Police Strength - Total,C3. Santioned Police Strength (Incl. Women),87073,4086,437,0,59662,18,39,18142,33,1170,3296,190
+0.0,2010,Sanctioned Police Strength - Total,C3. Santioned Police Strength (Incl. Women),90370,4061,413,0,59460,28,22,21379,30,1158,3653,166
+0.0,2001,Sanctioned Women Police Strength - Armed Police,D2. Sanctioned Women Armed Police,0,0,0,0,0,0,0,0,0,0,0,0
+0.0,2002,Sanctioned Women Police Strength - Armed Police,D2. Sanctioned Women Armed Police,473,18,1,0,372,0,0,71,0,3,8,0
+0.0,2003,Sanctioned Women Police Strength - Armed Police,D2. Sanctioned Women Armed Police,846,26,1,0,661,0,0,141,0,5,12,0
+0.0,2004,Sanctioned Women Police Strength - Armed Police,D2. Sanctioned Women Armed Police,1267,37,2,0,992,0,0,210,0,7,19,0
+0.0,2005,Sanctioned Women Police Strength - Armed Police,D2. Sanctioned Women Armed Police,1267,37,2,0,992,0,0,210,0,7,19,0
+0.0,2006,Sanctioned Women Police Strength - Armed Police,D2. Sanctioned Women Armed Police,1312,37,2,0,1025,0,0,222,0,7,19,0
+0.0,2007,Sanctioned Women Police Strength - Armed Police,D2. Sanctioned Women Armed Police,846,26,1,0,661,0,0,141,0,5,12,0
+0.0,2008,Sanctioned Women Police Strength - Armed Police,D2. Sanctioned Women Armed Police,0,0,0,0,0,0,0,0,0,0,0,0
+0.0,2009,Sanctioned Women Police Strength - Armed Police,D2. Sanctioned Women Armed Police,0,0,0,0,0,0,0,0,0,0,0,0
+0.0,2010,Sanctioned Women Police Strength - Armed Police,D2. Sanctioned Women Armed Police,0,0,0,0,0,0,0,0,0,0,0,0
+0.0,2001,Sanctioned Women Police Strength - Civil Police,D1. Sanctioned Women Civil Police (Incl. District Armed Police),2530,61,3,0,1786,0,0,599,0,15,65,1
+0.0,2002,Sanctioned Women Police Strength - Civil Police,D1. Sanctioned Women Civil Police (Incl. District Armed Police),2792,72,3,0,1963,0,0,668,0,15,70,1
+0.0,2003,Sanctioned Women Police Strength - Civil Police,D1. Sanctioned Women Civil Police (Incl. District Armed Police),4787,194,7,0,3295,0,0,1114,0,33,141,3
+0.0,2004,Sanctioned Women Police Strength - Civil Police,D1. Sanctioned Women Civil Police (Incl. District Armed Police),6475,283,11,0,4430,0,0,1498,0,51,197,5
+0.0,2005,Sanctioned Women Police Strength - Civil Police,D1. Sanctioned Women Civil Police (Incl. District Armed Police),6475,283,11,0,4430,0,0,1498,0,51,197,5
+0.0,2006,Sanctioned Women Police Strength - Civil Police,D1. Sanctioned Women Civil Police (Incl. District Armed Police),6523,291,11,0,4455,0,0,1510,0,51,200,5
+0.0,2007,Sanctioned Women Police Strength - Civil Police,D1. Sanctioned Women Civil Police (Incl. District Armed Police),5650,240,7,0,3909,0,0,1286,0,37,168,3
+0.0,2008,Sanctioned Women Police Strength - Civil Police,D1. Sanctioned Women Civil Police (Incl. District Armed Police),0,0,0,0,0,0,0,0,0,0,0,0
+0.0,2009,Sanctioned Women Police Strength - Civil Police,D1. Sanctioned Women Civil Police (Incl. District Armed Police),0,0,0,0,0,0,0,0,0,0,0,0
+0.0,2010,Sanctioned Women Police Strength - Civil Police,D1. Sanctioned Women Civil Police (Incl. District Armed Police),0,0,0,0,0,0,0,0,0,0,0,0
+0.0,2001,Sanctioned Women Police Strength - Total,D3. Sanctioned Women Police Strength,2530,61,3,0,1786,0,0,599,0,15,65,1
+0.0,2002,Sanctioned Women Police Strength - Total,D3. Sanctioned Women Police Strength,3265,90,4,0,2335,0,0,739,0,18,78,1
+0.0,2003,Sanctioned Women Police Strength - Total,D3. Sanctioned Women Police Strength,5633,220,8,0,3956,0,0,1255,0,38,153,3
+0.0,2004,Sanctioned Women Police Strength - Total,D3. Sanctioned Women Police Strength,7742,320,13,0,5422,0,0,1708,0,58,216,5
+0.0,2005,Sanctioned Women Police Strength - Total,D3. Sanctioned Women Police Strength,7742,320,13,0,5422,0,0,1708,0,58,216,5
+0.0,2006,Sanctioned Women Police Strength - Total,D3. Sanctioned Women Police Strength,7835,328,13,0,5480,0,0,1732,0,58,219,5
+0.0,2007,Sanctioned Women Police Strength - Total,D3. Sanctioned Women Police Strength,6496,266,8,0,4570,0,0,1427,0,42,180,3
+0.0,2008,Sanctioned Women Police Strength - Total,D3. Sanctioned Women Police Strength,0,0,0,0,0,0,0,0,0,0,0,0
+0.0,2009,Sanctioned Women Police Strength - Total,D3. Sanctioned Women Police Strength,0,0,0,0,0,0,0,0,0,0,0,0
+0.0,2010,Sanctioned Women Police Strength - Total,D3. Sanctioned Women Police Strength,0,0,0,0,0,0,0,0,0,0,0,0

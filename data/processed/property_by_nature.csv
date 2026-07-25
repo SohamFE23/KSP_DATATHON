@@ -1,0 +1,131 @@
+Area_Name,Year,Group_Name,Sub_Group_Name,Cases_Property_Recovered,Cases_Property_Stolen,Value_of_Property_Recovered,Value_of_Property_Stolen
+Karnataka,2001,Cattle - Property,2. Cattle,202,289,1663720,2522080
+Karnataka,2002,Cattle - Property,2. Cattle,228,325,3105356,5143796
+Karnataka,2003,Cattle - Property,2. Cattle,165,255,1314715,2631285
+Karnataka,2004,Cattle - Property,2. Cattle,210,309,1769420,3365612
+Karnataka,2005,Cattle - Property,2. Cattle,173,273,1978300,3158571
+Karnataka,2006,Cattle - Property,2. Cattle,180,252,2264531,3451281
+Karnataka,2007,Cattle - Property,2. Cattle,181,245,2191260,3643970
+Karnataka,2008,Cattle - Property,2. Cattle,164,241,2517965,4877650
+Karnataka,2009,Cattle - Property,2. Cattle,154,244,3071240,4863072
+Karnataka,2010,Cattle - Property,2. Cattle,181,246,4361813,6089440
+Karnataka,2001,Communication and Electricity Wire - Property,1. Communation and Electricity Wire,179,701,961899,5345576
+Karnataka,2002,Communication and Electricity Wire - Property,1. Communation and Electricity Wire,171,783,2215421,28431932
+Karnataka,2003,Communication and Electricity Wire - Property,1. Communation and Electricity Wire,218,1147,2152610,11605453
+Karnataka,2004,Communication and Electricity Wire - Property,1. Communation and Electricity Wire,272,1109,3502210,18500363
+Karnataka,2005,Communication and Electricity Wire - Property,1. Communation and Electricity Wire,196,1009,6236920,29610338
+Karnataka,2006,Communication and Electricity Wire - Property,1. Communation and Electricity Wire,275,1079,7115373,24328781
+Karnataka,2007,Communication and Electricity Wire - Property,1. Communation and Electricity Wire,217,790,4723341,17308190
+Karnataka,2008,Communication and Electricity Wire - Property,1. Communation and Electricity Wire,177,636,2678855,14335359
+Karnataka,2009,Communication and Electricity Wire - Property,1. Communation and Electricity Wire,123,377,2245609,7883007
+Karnataka,2010,Communication and Electricity Wire - Property,1. Communation and Electricity Wire,71,297,1396635,7452583
+Karnataka,2001,Cultural Property including Antiques - Property,8. Cultural Property including Antiques,70,161,16251675,20348075
+Karnataka,2002,Cultural Property including Antiques - Property,8. Cultural Property including Antiques,141,396,12438312,38968005
+Karnataka,2003,Cultural Property including Antiques - Property,8. Cultural Property including Antiques,172,380,15798938,28179291
+Karnataka,2004,Cultural Property including Antiques - Property,8. Cultural Property including Antiques,144,430,8547527,30308458
+Karnataka,2005,Cultural Property including Antiques - Property,8. Cultural Property including Antiques,138,297,15646025,25123364
+Karnataka,2006,Cultural Property including Antiques - Property,8. Cultural Property including Antiques,123,296,19336212,32168882
+Karnataka,2007,Cultural Property including Antiques - Property,8. Cultural Property including Antiques,130,351,24368125,46370739
+Karnataka,2008,Cultural Property including Antiques - Property,8. Cultural Property including Antiques,143,519,25575025,66989149
+Karnataka,2009,Cultural Property including Antiques - Property,8. Cultural Property including Antiques,124,315,30147900,75174081
+Karnataka,2010,Cultural Property including Antiques - Property,8. Cultural Property including Antiques,97,214,29132950,53038885
+Karnataka,2001,Cycle - Property,3. Cycle,398,717,532207,1214735
+Karnataka,2002,Cycle - Property,3. Cycle,552,863,818431,1424671
+Karnataka,2003,Cycle - Property,3. Cycle,396,622,619915,1039289
+Karnataka,2004,Cycle - Property,3. Cycle,429,594,3561752,3843141
+Karnataka,2005,Cycle - Property,3. Cycle,413,569,698651,988003
+Karnataka,2006,Cycle - Property,3. Cycle,267,346,591811,725273
+Karnataka,2007,Cycle - Property,3. Cycle,170,241,379778,616480
+Karnataka,2008,Cycle - Property,3. Cycle,81,141,194711,323009
+Karnataka,2009,Cycle - Property,3. Cycle,48,99,182100,341921
+Karnataka,2010,Cycle - Property,3. Cycle,42,80,162830,368764
+Karnataka,2001,Electronic Components - Property,7. Electronic Components,180,585,38014794,89878033
+Karnataka,2002,Electronic Components - Property,7. Electronic Components,147,512,26219667,66762994
+Karnataka,2003,Electronic Components - Property,7. Electronic Components,115,351,19467194,54173981
+Karnataka,2004,Electronic Components - Property,7. Electronic Components,186,829,29633583,71150215
+Karnataka,2005,Electronic Components - Property,7. Electronic Components,211,606,31519528,93458094
+Karnataka,2006,Electronic Components - Property,7. Electronic Components,126,503,34003304,110211806
+Karnataka,2007,Electronic Components - Property,7. Electronic Components,131,544,45302077,132811483
+Karnataka,2008,Electronic Components - Property,7. Electronic Components,215,776,81450627,177373940
+Karnataka,2009,Electronic Components - Property,7. Electronic Components,252,959,72300050,262384320
+Karnataka,2010,Electronic Components - Property,7. Electronic Components,442,1087,138781147,199607269
+Karnataka,2001,Fire arms - Property,5. Fire Arms,1243,3831,90002943,186490525
+Karnataka,2001,Fire arms - Property,6. Explosives/Explosive Substances,1243,3831,90002943,186490525
+Karnataka,2002,Fire arms - Property,5. Fire Arms,1260,4220,68654716,195846475
+Karnataka,2002,Fire arms - Property,6. Explosives/Explosive Substances,1260,4220,68654716,195846475
+Karnataka,2003,Fire arms - Property,5. Fire Arms,1321,4306,67198207,161086720
+Karnataka,2003,Fire arms - Property,6. Explosives/Explosive Substances,1321,4306,67198207,161086720
+Karnataka,2004,Fire arms - Property,5. Fire Arms,1422,5609,73222048,208262509
+Karnataka,2004,Fire arms - Property,6. Explosives/Explosive Substances,1422,5609,73222048,208262509
+Karnataka,2005,Fire arms - Property,5. Fire Arms,1402,5976,92973671,238259793
+Karnataka,2005,Fire arms - Property,6. Explosives/Explosive Substances,1402,5976,92973671,238259793
+Karnataka,2006,Fire arms - Property,5. Fire Arms,1290,5601,96404057,255526050
+Karnataka,2006,Fire arms - Property,6. Explosives/Explosive Substances,1290,5601,96404057,255526050
+Karnataka,2007,Fire arms - Property,5. Fire Arms,1822,5768,118815035,315988212
+Karnataka,2007,Fire arms - Property,6. Explosives/Explosive Substances,1822,5768,118815035,315988212
+Karnataka,2008,Fire arms - Property,5. Fire Arms,2032,8842,181450958,440257666
+Karnataka,2008,Fire arms - Property,6. Explosives/Explosive Substances,2032,8842,181450958,440257666
+Karnataka,2009,Fire arms - Property,5. Fire Arms,2613,10990,225620794,599324425
+Karnataka,2009,Fire arms - Property,6. Explosives/Explosive Substances,2613,10990,225620794,599324425
+Karnataka,2010,Fire arms - Property,5. Fire Arms,3211,10302,339001206,519717486
+Karnataka,2010,Fire arms - Property,6. Explosives/Explosive Substances,3211,10302,339001206,519717486
+Karnataka,2001,Motor Vehicles - Motor car/Taxi/Jeep - Property,4.2 Motor Vehicles - Motor Car/Taxi/Jeep,806,1879,6414141,14365854
+Karnataka,2002,Motor Vehicles - Motor car/Taxi/Jeep - Property,4.2 Motor Vehicles - Motor Car/Taxi/Jeep,193,509,3687943,11219770
+Karnataka,2003,Motor Vehicles - Motor car/Taxi/Jeep - Property,4.2 Motor Vehicles - Motor Car/Taxi/Jeep,247,674,4475197,14119117
+Karnataka,2004,Motor Vehicles - Motor car/Taxi/Jeep - Property,4.2 Motor Vehicles - Motor Car/Taxi/Jeep,227,794,6406768,20384449
+Karnataka,2005,Motor Vehicles - Motor car/Taxi/Jeep - Property,4.2 Motor Vehicles - Motor Car/Taxi/Jeep,350,1067,6280814,21671176
+Karnataka,2006,Motor Vehicles - Motor car/Taxi/Jeep - Property,4.2 Motor Vehicles - Motor Car/Taxi/Jeep,366,910,5439794,20856182
+Karnataka,2007,Motor Vehicles - Motor car/Taxi/Jeep - Property,4.2 Motor Vehicles - Motor Car/Taxi/Jeep,232,626,6879763,21295741
+Karnataka,2008,Motor Vehicles - Motor car/Taxi/Jeep - Property,4.2 Motor Vehicles - Motor Car/Taxi/Jeep,220,704,5943554,23317370
+Karnataka,2009,Motor Vehicles - Motor car/Taxi/Jeep - Property,4.2 Motor Vehicles - Motor Car/Taxi/Jeep,262,805,6855445,19894741
+Karnataka,2010,Motor Vehicles - Motor car/Taxi/Jeep - Property,4.2 Motor Vehicles - Motor Car/Taxi/Jeep,180,539,5383785,22836655
+Karnataka,2001,Motor Vehicles - Others - Property,4.3 Motor Vehicles - Other Motor Vehicles,143,546,2933868,10991600
+Karnataka,2002,Motor Vehicles - Others - Property,4.3 Motor Vehicles - Other Motor Vehicles,5,10,2500,51450
+Karnataka,2003,Motor Vehicles - Others - Property,4.3 Motor Vehicles - Other Motor Vehicles,53,222,2044286,6583796
+Karnataka,2004,Motor Vehicles - Others - Property,4.3 Motor Vehicles - Other Motor Vehicles,10,19,85000,162500
+Karnataka,2005,Motor Vehicles - Others - Property,4.3 Motor Vehicles - Other Motor Vehicles,1,6,18000,108100
+Karnataka,2006,Motor Vehicles - Others - Property,4.3 Motor Vehicles - Other Motor Vehicles,99,404,3205100,16397106
+Karnataka,2007,Motor Vehicles - Others - Property,4.3 Motor Vehicles - Other Motor Vehicles,219,638,2956652,33583109
+Karnataka,2008,Motor Vehicles - Others - Property,4.3 Motor Vehicles - Other Motor Vehicles,100,260,15969590,36047601
+Karnataka,2009,Motor Vehicles - Others - Property,4.3 Motor Vehicles - Other Motor Vehicles,13,44,1014443,3086709
+Karnataka,2010,Motor Vehicles - Others - Property,4.3 Motor Vehicles - Other Motor Vehicles,29,61,5467366,7916362
+Karnataka,2001,Motor Vehicles - Property,4. Motor Vehicles,10,11,63180,99680
+Karnataka,2002,Motor Vehicles - Property,4. Motor Vehicles,0,0,0,0
+Karnataka,2003,Motor Vehicles - Property,4. Motor Vehicles,0,0,0,0
+Karnataka,2004,Motor Vehicles - Property,4. Motor Vehicles,31,70,686235,1058584
+Karnataka,2005,Motor Vehicles - Property,4. Motor Vehicles,8,10,4216014,917606
+Karnataka,2006,Motor Vehicles - Property,4. Motor Vehicles,1,1,8000,8000
+Karnataka,2007,Motor Vehicles - Property,4. Motor Vehicles,0,0,0,0
+Karnataka,2008,Motor Vehicles - Property,4. Motor Vehicles,1,2,40000,50000
+Karnataka,2009,Motor Vehicles - Property,4. Motor Vehicles,6,13,228518,828052
+Karnataka,2010,Motor Vehicles - Property,4. Motor Vehicles,0,0,0,0
+Karnataka,2001,Motor Vehicles -	Motor Cycles/Scooters - Property,4.1 Motor Vehicles - Motor Cycle/Scooters,38,52,1475206,1714706
+Karnataka,2002,Motor Vehicles -	Motor Cycles/Scooters - Property,4.1 Motor Vehicles - Motor Cycle/Scooters,0,1,0,35000
+Karnataka,2003,Motor Vehicles -	Motor Cycles/Scooters - Property,4.1 Motor Vehicles - Motor Cycle/Scooters,0,1,0,45000
+Karnataka,2004,Motor Vehicles -	Motor Cycles/Scooters - Property,4.1 Motor Vehicles - Motor Cycle/Scooters,83,998,7084471,32261179
+Karnataka,2005,Motor Vehicles -	Motor Cycles/Scooters - Property,4.1 Motor Vehicles - Motor Cycle/Scooters,14,108,4366014,305845
+Karnataka,2006,Motor Vehicles -	Motor Cycles/Scooters - Property,4.1 Motor Vehicles - Motor Cycle/Scooters,1,3,20000,29000
+Karnataka,2007,Motor Vehicles -	Motor Cycles/Scooters - Property,4.1 Motor Vehicles - Motor Cycle/Scooters,2,8,1000000,1119200
+Karnataka,2008,Motor Vehicles -	Motor Cycles/Scooters - Property,4.1 Motor Vehicles - Motor Cycle/Scooters,4,6,80500,568000
+Karnataka,2009,Motor Vehicles -	Motor Cycles/Scooters - Property,4.1 Motor Vehicles - Motor Cycle/Scooters,2,4,35000,90000
+Karnataka,2010,Motor Vehicles -	Motor Cycles/Scooters - Property,4.1 Motor Vehicles - Motor Cycle/Scooters,4,8,194000,239066
+Karnataka,2001,Other Nature of Property,9. Other kinds of Property,3633,13013,114484139,361138111
+Karnataka,2002,Other Nature of Property,9. Other kinds of Property,4988,15508,185800607,396702549
+Karnataka,2003,Other Nature of Property,9. Other kinds of Property,4308,15236,140736961,502956855
+Karnataka,2004,Other Nature of Property,9. Other kinds of Property,4422,14763,207065817,524488144
+Karnataka,2005,Other Nature of Property,9. Other kinds of Property,5416,16167,240493132,2486314642
+Karnataka,2006,Other Nature of Property,9. Other kinds of Property,5273,14568,212534737,654738201
+Karnataka,2007,Other Nature of Property,9. Other kinds of Property,6586,13814,197260767,845135881
+Karnataka,2008,Other Nature of Property,9. Other kinds of Property,5381,15895,400276367,1401282198
+Karnataka,2009,Other Nature of Property,9. Other kinds of Property,5712,17999,634263479,1875157515
+Karnataka,2010,Other Nature of Property,9. Other kinds of Property,6575,18184,643679075,1846862989
+Karnataka,2001,Total Property(Nature),Total Property Stolen & Recovered,6652,21039,218531303,583882867
+Karnataka,2002,Total Property(Nature),Total Property Stolen & Recovered,7397,22219,264284974,638855643
+Karnataka,2003,Total Property(Nature),Total Property Stolen & Recovered,6708,22463,218541891,700067515
+Karnataka,2004,Total Property(Nature),Total Property Stolen & Recovered,7106,24265,303383721,812326481
+Karnataka,2005,Total Property(Nature),Total Property Stolen & Recovered,7973,25185,357261516,2781334074
+Karnataka,2006,Total Property(Nature),Total Property Stolen & Recovered,7752,23164,327583403,976059874
+Karnataka,2007,Total Property(Nature),Total Property Stolen & Recovered,9429,22130,334206596,1238690783
+Karnataka,2008,Total Property(Nature),Total Property Stolen & Recovered,8160,26727,609152500,1921058853
+Karnataka,2009,Total Property(Nature),Total Property Stolen & Recovered,8933,30575,873516628,2511469442
+Karnataka,2010,Total Property(Nature),Total Property Stolen & Recovered,10293,29717,999646710,2411483345
