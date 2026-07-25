@@ -22,7 +22,11 @@ def ok(data): return jsonify({"status": "ok", "data": data})
 def err(msg, code=400): return jsonify({"status": "error", "message": msg}), code
 
 
-# ── 1. Health Check ────────────────────────────────────────────────────────────
+# ── 1. Health Check & Root ──────────────────────────────────────────────────────
+@app.route("/", methods=["GET"])
+def index():
+    return hello()
+
 @app.route("/hello", methods=["GET"])
 def hello():
     return ok({
