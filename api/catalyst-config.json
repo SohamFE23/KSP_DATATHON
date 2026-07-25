@@ -1,0 +1,9 @@
+{
+  "name": "suraksha_api",
+  "type": "advancedio",
+  "stack": "python3.10",
+  "handler": "app.app",
+  "env": {
+    "PYTHONUNBUFFERED": "1"
+  }
+}

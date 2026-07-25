@@ -1,0 +1,15 @@
+{
+  "name": "SurakshaAI",
+  "version": "2.0.0",
+  "functions": {
+    "target": "api",
+    "ignore": [
+      ".git",
+      "node_modules",
+      "venv"
+    ]
+  },
+  "client": {
+    "source": "dashboard"
+  }
+}

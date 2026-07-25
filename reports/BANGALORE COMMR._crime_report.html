@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>SurakshaAI Executive Crime Intelligence Report - BANGALORE COMMR.</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #0d1117;
+            color: #e6edf3;
+            margin: 0; padding: 30px;
+        }
+        .header {
+            border-bottom: 2px solid #30363d;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+        .title { font-size: 28px; font-weight: bold; color: #58a6ff; margin: 0; }
+        .subtitle { font-size: 14px; color: #8b949e; margin-top: 5px; }
+        .card-grid { display: flex; gap: 15px; margin-bottom: 25px; }
+        .card {
+            flex: 1; background: #161b22; border: 1px solid #30363d;
+            border-radius: 8px; padding: 15px; text-align: center;
+        }
+        .card-val { font-size: 24px; font-weight: bold; margin-top: 5px; color: #e6edf3; }
+        .badge {
+            display: inline-block; padding: 4px 12px; border-radius: 12px;
+            font-weight: bold; font-size: 14px;
+        }
+        .badge-HIGH { background: rgba(248,81,73,0.2); color: #f85149; border: 1px solid #f85149; }
+        .badge-MEDIUM { background: rgba(227,179,65,0.2); color: #e3b341; border: 1px solid #e3b341; }
+        .badge-LOW { background: rgba(63,185,80,0.2); color: #3fb950; border: 1px solid #3fb950; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { padding: 10px; border: 1px solid #30363d; text-align: left; }
+        th { background: #161b22; color: #58a6ff; }
+        .footer { margin-top: 40px; font-size: 12px; color: #8b949e; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="title">🛡️ SurakshaAI Executive Intelligence Report</div>
+        <div class="subtitle">Karnataka State Police | SCRB Datathon 2026 | District: <strong>BANGALORE COMMR.</strong></div>
+    </div>
+
+    <div class="card-grid">
+        <div class="card">
+            <div style="color:#8b949e;font-size:12px;">RISK SCORE</div>
+            <div class="card-val">66.6 / 100</div>
+            <div style="margin-top:8px;"><span class="badge badge-HIGH">HIGH</span></div>
+        </div>
+        <div class="card">
+            <div style="color:#8b949e;font-size:12px;">TOTAL IPC CRIMES</div>
+            <div class="card-val">72,001</div>
+            <div style="color:#8b949e;font-size:11px;margin-top:4px;">Year 2013</div>
+        </div>
+        <div class="card">
+            <div style="color:#8b949e;font-size:12px;">VIOLENT CRIMES</div>
+            <div class="card-val">916</div>
+            <div style="color:#8b949e;font-size:11px;margin-top:4px;">Murder: 217 | Rape: 80</div>
+        </div>
+    </div>
+
+    <h3>📊 6-Dimension Composite Risk Assessment</h3>
+    <table>
+        <tr><th>Dimension</th><th>Score</th><th>Max Weight</th><th>Category Description</th></tr>
+        <tr><td>D1 Violent Crime Severity</td><td>20</td><td>20</td><td>Murder, rape, kidnapping, robbery</td></tr>
+        <tr><td>D2 Property & Economic Crime</td><td>20</td><td>20</td><td>Theft, burglary, auto theft, fraud</td></tr>
+        <tr><td>D3 Women's Safety</td><td>10.96</td><td>15</td><td>Dowry deaths, assault, cruelty</td></tr>
+        <tr><td>D4 Crime Trend Volatility</td><td>0.43</td><td>15</td><td>Year-over-year delta spike</td></tr>
+        <tr><td>D5 Total Crime Volume</td><td>15</td><td>15</td><td>Normalized volume against state peak</td></tr>
+        <tr><td>D6 Anomaly & Spike Indicator</td><td>0.21</td><td>15</td><td>IsolationForest anomaly flag</td></tr>
+    </table>
+
+    <h3 style="margin-top:30px;">📋 Actionable Recommendations for Police Administration</h3>
+    <ul>
+        <li><strong>Patrolling Strategy:</strong> Increase high-visibility night patrolling in high property crime sectors.</li>
+        <li><strong>Women Safety Cells:</strong> Strengthen special victim assistance units for violent/domestic crime response.</li>
+        <li><strong>Predictive Resource Allocation:</strong> Deploy additional personnel during peak forecasted threat windows.</li>
+    </ul>
+
+    <div class="footer">
+        Generated automatically by SurakshaAI Intelligence Platform v2.0
+    </div>
+</body>
+</html>
