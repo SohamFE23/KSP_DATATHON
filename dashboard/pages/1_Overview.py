@@ -21,9 +21,13 @@ def load():
     an = pd.read_csv(PROC / "anomaly_flagged.csv", low_memory=False)
     return df, rs, an
 
-DARK = {"paper_bgcolor":"#0d1117","plot_bgcolor":"#161b22",
-        "font":{"color":"#e6edf3"},"xaxis":{"gridcolor":"#30363d","color":"#8b949e"},
-        "yaxis":{"gridcolor":"#30363d","color":"#8b949e"}}
+DARK = {
+    "paper_bgcolor": "#0d1117",
+    "plot_bgcolor": "#161b22",
+    "font": {"color": "#e6edf3"},
+    "xaxis": {"gridcolor": "#30363d", "color": "#8b949e"},
+    "yaxis": {"gridcolor": "#30363d", "color": "#8b949e"}
+}
 
 st.markdown("## 📊 Overview Dashboard")
 st.markdown("<hr style='border-color:#30363d;'>", unsafe_allow_html=True)
@@ -31,7 +35,8 @@ st.markdown("<hr style='border-color:#30363d;'>", unsafe_allow_html=True)
 try:
     df, rs, an = load()
 except Exception as e:
-    st.error(f"Data load failed: {e}"); st.stop()
+    st.error(f"Data load failed: {e}")
+    st.stop()
 
 # ── KPI Row ────────────────────────────────────────────────────────────────────
 total_crimes  = int(df["TOTAL_CRIMES"].sum() if "TOTAL_CRIMES" in df else 0)
@@ -65,8 +70,16 @@ with col1:
             fill="tozeroy", fillcolor="rgba(88,166,255,0.1)",
             name="Total Crimes",
         ))
-        fig.update_layout(**DARK, height=300, margin=dict(l=10,r=10,t=10,b=10),
-                          showlegend=False)
+        fig.update_layout(
+            paper_bgcolor="#0d1117",
+            plot_bgcolor="#161b22",
+            font=dict(color="#e6edf3"),
+            xaxis=dict(gridcolor="#30363d", color="#8b949e"),
+            yaxis=dict(gridcolor="#30363d", color="#8b949e"),
+            height=300,
+            margin=dict(l=10,r=10,t=10,b=10),
+            showlegend=False
+        )
         st.plotly_chart(fig, use_container_width=True)
 
 with col2:
@@ -79,8 +92,16 @@ with col2:
             orientation="h",
             marker_color=[f"hsl({220-i*15},70%,55%)" for i in range(10)],
         ))
-        fig2.update_layout(**DARK, height=300, margin=dict(l=10,r=10,t=10,b=10),
-                           showlegend=False, yaxis={"autorange":"reversed"})
+        fig2.update_layout(
+            paper_bgcolor="#0d1117",
+            plot_bgcolor="#161b22",
+            font=dict(color="#e6edf3"),
+            xaxis=dict(gridcolor="#30363d", color="#8b949e"),
+            yaxis=dict(gridcolor="#30363d", color="#8b949e", autorange="reversed"),
+            height=300,
+            margin=dict(l=10,r=10,t=10,b=10),
+            showlegend=False
+        )
         st.plotly_chart(fig2, use_container_width=True)
 
 # ── Row 2: Risk Distribution + Crime Category Mix ──────────────────────────────
@@ -97,9 +118,15 @@ with col3:
             hole=0.55,
             marker_colors=["#f85149","#e3b341","#3fb950"],
         ))
-        fig3.update_layout(**DARK, height=280, margin=dict(l=10,r=10,t=10,b=10),
-                           showlegend=True,
-                           legend=dict(bgcolor="#161b22",bordercolor="#30363d"))
+        fig3.update_layout(
+            paper_bgcolor="#0d1117",
+            plot_bgcolor="#161b22",
+            font=dict(color="#e6edf3"),
+            height=280,
+            margin=dict(l=10,r=10,t=10,b=10),
+            showlegend=True,
+            legend=dict(bgcolor="#161b22", bordercolor="#30363d")
+        )
         st.plotly_chart(fig3, use_container_width=True)
 
 with col4:
@@ -114,9 +141,16 @@ with col4:
         x=list(totals.keys()), y=list(totals.values()),
         marker_color=list(CATS.values())[:len(totals)],
     ))
-    fig4.update_layout(**DARK, height=280, margin=dict(l=10,r=10,t=10,b=10),
-                       showlegend=False,
-                       xaxis={"tickangle":-35,"tickfont":{"size":10}})
+    fig4.update_layout(
+        paper_bgcolor="#0d1117",
+        plot_bgcolor="#161b22",
+        font=dict(color="#e6edf3"),
+        xaxis=dict(gridcolor="#30363d", color="#8b949e", tickangle=-35, tickfont=dict(size=10)),
+        yaxis=dict(gridcolor="#30363d", color="#8b949e"),
+        height=280,
+        margin=dict(l=10,r=10,t=10,b=10),
+        showlegend=False
+    )
     st.plotly_chart(fig4, use_container_width=True)
 
 # ── Row 3: YoY Spike Map ──────────────────────────────────────────────────────
@@ -133,6 +167,14 @@ if "CRIME_YOY_CHANGE" in df.columns and "LAT" in df.columns:
         size_max=35,
     )
     fig5.update_traces(textposition="top center", textfont=dict(size=9, color="#e6edf3"))
-    fig5.update_layout(**DARK, height=420, coloraxis_colorbar=dict(title="YoY %"),
-                       margin=dict(l=10,r=10,t=10,b=10))
+    fig5.update_layout(
+        paper_bgcolor="#0d1117",
+        plot_bgcolor="#161b22",
+        font=dict(color="#e6edf3"),
+        xaxis=dict(gridcolor="#30363d", color="#8b949e"),
+        yaxis=dict(gridcolor="#30363d", color="#8b949e"),
+        height=420,
+        coloraxis_colorbar=dict(title="YoY %"),
+        margin=dict(l=10,r=10,t=10,b=10)
+    )
     st.plotly_chart(fig5, use_container_width=True)

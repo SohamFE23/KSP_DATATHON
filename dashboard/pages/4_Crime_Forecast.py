@@ -96,4 +96,4 @@ with col2:
 st.markdown("<br>", unsafe_allow_html=True)
 section_header("🚨 Top Emerging Threat Districts")
 if (PROC / "forecast_top5_districts.png").exists():
-    st.image(str(PROC / "forecast_top5_districts.png"), use_column_width=True)
+    st.image(str(PROC / "forecast_top5_districts.png"), use_container_width=True)

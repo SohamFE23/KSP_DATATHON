@@ -32,6 +32,6 @@ with tab2:
     section_header("Crime Type Correlation Matrix", "Pairwise Pearson correlation coefficients between crime types")
     corr_img = PROC / "crime_correlation.png"
     if corr_img.exists():
-        st.image(str(corr_img), use_column_width=True)
+        st.image(str(corr_img), use_container_width=True)
     else:
         info_box("Correlation image not found. Run `python pipeline/07_network_builder.py`", "warn")

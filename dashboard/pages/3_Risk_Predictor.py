@@ -76,6 +76,6 @@ with col2:
 st.markdown("<br>", unsafe_allow_html=True)
 section_header("🤖 XGBoost Feature Importance & Model Accuracy")
 if (PROC / "xgb_results.png").exists():
-    st.image(str(PROC / "xgb_results.png"), use_column_width=True)
+    st.image(str(PROC / "xgb_results.png"), use_container_width=True)
 else:
     info_box("XGBoost results visualization model png not generated yet.", "info")

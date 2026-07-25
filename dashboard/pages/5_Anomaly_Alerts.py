@@ -71,4 +71,4 @@ else:
 st.markdown("<br>", unsafe_allow_html=True)
 section_header("📊 Anomaly Feature Distribution Visualization")
 if (PROC / "anomaly_results.png").exists():
-    st.image(str(PROC / "anomaly_results.png"), use_column_width=True)
+    st.image(str(PROC / "anomaly_results.png"), use_container_width=True)
