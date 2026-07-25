@@ -1,5 +1,8 @@
 {
   "functions": {
+    "targets": [
+      "suraksha_api"
+    ],
     "source": "functions"
   },
   "client": {
