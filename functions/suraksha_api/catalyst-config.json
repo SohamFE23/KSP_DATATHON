@@ -1,0 +1,8 @@
+{
+  "name": "suraksha_api",
+  "type": "advancedio",
+  "stack": "python3.10",
+  "execution": {
+    "main": "main.py"
+  }
+}
