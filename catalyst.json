@@ -1,14 +1,12 @@
 {
   "functions": {
     "targets": [
-      {
-        "name": "suraksha_api",
-        "path": "functions/suraksha_api"
-      }
+      "project_rainfall_function"
     ],
-    "source": "functions"
+    "source": "functions",
+    "ignore": []
   },
   "client": {
-    "source": "dashboard"
+    "source": "client"
   }
 }

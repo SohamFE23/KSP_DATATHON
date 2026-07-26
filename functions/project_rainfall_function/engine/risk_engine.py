@@ -1,12 +1,9 @@
-"""api/engine/risk_engine.py — Fixed 6-Dimension composite risk formula."""
+"""engine/risk_engine.py — 6-Dimension composite risk formula."""
 import pandas as pd
 import numpy as np
 
-# ── Dimension weights (sum = 100) ─────────────────────────────────────────────
 WEIGHTS = {"D1": 20, "D2": 20, "D3": 15, "D4": 15, "D5": 15, "D6": 15}
-
 RISK_BANDS = {"LOW": (0, 35), "MEDIUM": (35, 60), "HIGH": (60, 100)}
-
 
 def _safe(val, default=0.0):
     try:
@@ -15,13 +12,7 @@ def _safe(val, default=0.0):
     except Exception:
         return default
 
-
 def compute_risk(row: pd.Series) -> dict:
-    """
-    Compute composite risk score (0-100) for one district-year row.
-    Returns dict with total score, 6 dimension scores, and label.
-    """
-    # D1 - Violent Crime Severity (murder + rape + kidnapping)
     murder   = _safe(row.get("MURDER", 0))
     rape     = _safe(row.get("RAPE", 0))
     kidnap   = _safe(row.get("KIDNAPPING_ABDUCTION", 0))
@@ -29,30 +20,25 @@ def compute_risk(row: pd.Series) -> dict:
     robbery  = _safe(row.get("ROBBERY", 0))
     D1 = min(WEIGHTS["D1"], (murder * 3 + rape * 2 + kidnap + dacoity * 2 + robbery) / 50)
 
-    # D2 - Property & Economic Crime
     theft    = _safe(row.get("THEFT", 0))
     burglary = _safe(row.get("BURGLARY", 0))
     auto     = _safe(row.get("AUTO_THEFT", 0))
     cheating = _safe(row.get("CHEATING", 0))
     D2 = min(WEIGHTS["D2"], (theft + burglary * 2 + auto + cheating) / 300)
 
-    # D3 - Women Safety (dowry deaths + assault + cruelty + rape)
     dowry    = _safe(row.get("DOWRY_DEATHS", 0))
     assault  = _safe(row.get("ASSAULT_ON_WOMEN_WITH_INTENT_TO_OUTRAGE_HER_MODESTY", 0))
     cruelty  = _safe(row.get("CRUELTY_BY_HUSBAND_OR_HIS_RELATIVES", 0))
     D3 = min(WEIGHTS["D3"], (dowry * 3 + assault + cruelty + rape) / 100)
 
-    # D4 - Crime Trend Volatility (YoY change)
     yoy = abs(_safe(row.get("CRIME_YOY_CHANGE", 0)))
     D4  = min(WEIGHTS["D4"], yoy / 10)
 
-    # D5 - Total Crime Volume (normalized against worst district)
     total = _safe(row.get("TOTAL_CRIMES", row.get("TOTAL_IPC_CRIMES", 0)))
     D5    = min(WEIGHTS["D5"], total / 2000)
 
-    # D6 - Anomaly / Spike indicator
-    spike     = _safe(row.get("IS_SPIKE", 0))
-    yoy_abs   = _safe(row.get("CRIME_YOY_CHANGE", 0))
+    spike   = _safe(row.get("IS_SPIKE", 0))
+    yoy_abs = _safe(row.get("CRIME_YOY_CHANGE", 0))
     D6 = min(WEIGHTS["D6"], spike * 10 + max(0, yoy_abs) / 20)
 
     score = round(D1 + D2 + D3 + D4 + D5 + D6, 2)
@@ -79,9 +65,7 @@ def compute_risk(row: pd.Series) -> dict:
         "weights": WEIGHTS,
     }
 
-
 def score_all(df: pd.DataFrame) -> pd.DataFrame:
-    """Apply compute_risk to every row of a DataFrame."""
     results = []
     for _, row in df.iterrows():
         r = compute_risk(row)

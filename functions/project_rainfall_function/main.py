@@ -6,7 +6,7 @@ from app import app
 
 def handler(context, basic_io):
     """
-    Zoho Catalyst Advanced I/O Handler
+    Zoho Catalyst Advanced I/O Python Entry Point
     """
     req = basic_io.get_request()
     url_path = req.get_url_path()
@@ -18,3 +18,6 @@ def handler(context, basic_io):
         basic_io.write(response.get_data(as_text=True))
         basic_io.set_status_code(response.status_code)
         basic_io.set_content_type("application/json")
+
+if __name__ == "__main__":
+    app.run(port=5000)

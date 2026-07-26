@@ -4,11 +4,10 @@ import pickle
 from pathlib import Path
 from functools import lru_cache
 
-# Resolve data path: functions/suraksha_api/engine -> KSP_DATATHON/data/processed
-_FUNC_DIR = Path(__file__).resolve().parent.parent  # functions/suraksha_api/
+# Path resolution for processed data directory
+_FUNC_DIR = Path(__file__).resolve().parent.parent
 BASE = _FUNC_DIR.parent.parent / "data" / "processed"
 if not BASE.exists():
-    # Fallback: try relative to project root
     BASE = _FUNC_DIR / "data" / "processed"
 
 def _read(fname, **kw):

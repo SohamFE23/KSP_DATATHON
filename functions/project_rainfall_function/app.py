@@ -1,10 +1,9 @@
-"""SurakshaAI Flask REST API (13 endpoints)"""
+"""functions/project_rainfall_function/app.py — Flask REST API (13 endpoints)"""
 import sys
 from pathlib import Path
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 
-# Ensure local engine package is importable
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from engine.loader import (
@@ -59,7 +58,6 @@ def risk(district):
     if df.empty:
         return err(f"District '{district}' not found. Try /districts for valid names.", 404)
 
-    # Use latest year if not specified
     row    = df.sort_values("YEAR").iloc[-1]
     result = compute_risk(row)
     result["district"] = row.get("DISTRICT", district)
@@ -67,7 +65,7 @@ def risk(district):
     return ok(result)
 
 
-# ── 4. Trends for District (year-by-year) ─────────────────────────────────────
+# ── 4. Trends for District ─────────────────────────────────────────────────────
 @app.route("/trends/<district>", methods=["GET"])
 def trends(district):
     df = filter_district(district)
@@ -91,7 +89,7 @@ def trends(district):
     return ok({"district": district.upper(), "trends": rows})
 
 
-# ── 5. Crime Type Breakdown ────────────────────────────────────────────────────
+# ── 5. Breakdown ───────────────────────────────────────────────────────────────
 @app.route("/breakdown/<district>", methods=["GET"])
 def breakdown(district):
     year = request.args.get("year", type=int)
@@ -116,7 +114,7 @@ def breakdown(district):
     })
 
 
-# ── 6. Top Risky Districts ─────────────────────────────────────────────────────
+# ── 6. Top Risky ───────────────────────────────────────────────────────────────
 @app.route("/top-risky", methods=["GET"])
 def top_risky():
     limit = request.args.get("limit", 10, type=int)
@@ -141,7 +139,7 @@ def top_risky():
     })
 
 
-# ── 7. Compare Districts ───────────────────────────────────────────────────────
+# ── 7. Compare ─────────────────────────────────────────────────────────────────
 @app.route("/compare", methods=["GET"])
 def compare():
     dists_raw = request.args.get("districts", "")
@@ -166,7 +164,7 @@ def compare():
     return ok({"comparison": results})
 
 
-# ── 8. Hotspot Clusters ────────────────────────────────────────────────────────
+# ── 8. Hotspots ────────────────────────────────────────────────────────────────
 @app.route("/hotspots", methods=["GET"])
 def hotspots():
     df = get_hotspots()
@@ -181,21 +179,21 @@ def hotspots():
     return ok({"hotspots": data, "count": len(data)})
 
 
-# ── 9. Crime Network Graph ─────────────────────────────────────────────────────
+# ── 9. Network Graph ───────────────────────────────────────────────────────────
 @app.route("/network", methods=["GET"])
 def network():
     graph = get_network_json()
     if not graph:
-        return err("Network graph not yet built. Run pipeline/07_network_builder.py", 503)
+        return err("Network graph not available.", 503)
     return ok(graph)
 
 
-# ── 10. Crime Forecast ────────────────────────────────────────────────────────
+# ── 10. Forecast ───────────────────────────────────────────────────────────────
 @app.route("/forecast/<district>", methods=["GET"])
 def forecast(district):
     df = get_forecast()
     if df.empty:
-        return err("Forecast not available. Run pipeline/05_time_series_forecast.py", 503)
+        return err("Forecast not available.", 503)
 
     df_d = df[df["DISTRICT"].str.upper() == district.upper()]
     if df_d.empty:
@@ -207,12 +205,12 @@ def forecast(district):
     return ok({"district": district.upper(), "forecast": rows, "trend": trend})
 
 
-# ── 11. Anomaly Alerts ────────────────────────────────────────────────────────
+# ── 11. Anomalies ──────────────────────────────────────────────────────────────
 @app.route("/anomalies", methods=["GET"])
 def anomalies():
     df = get_anomalies()
     if df.empty:
-        return err("Anomaly data not available. Run pipeline/06_anomaly_detection.py", 503)
+        return err("Anomaly data not available.", 503)
 
     district = request.args.get("district", "")
     severity = request.args.get("severity", "")
@@ -229,13 +227,13 @@ def anomalies():
     return ok({"anomalies": data, "total_flagged": len(anomaly_df), "count_returned": len(data)})
 
 
-# ── 12. Socio-Economic Data ────────────────────────────────────────────────────
+# ── 12. Socioeconomic ──────────────────────────────────────────────────────────
 @app.route("/socioeconomic", methods=["GET"])
 @app.route("/socioeconomic/<district>", methods=["GET"])
 def socioeconomic(district=None):
     df = get_socioeconomic()
     if df.empty:
-        return err("Socio-economic data not available. Run pipeline/00b_enrich_census.py", 503)
+        return err("Socioeconomic data not available.", 503)
     if district:
         df = df[df["DISTRICT"].str.upper() == district.upper()]
     return ok(df.fillna(0).to_dict(orient="records"))
@@ -250,8 +248,5 @@ def murder_motives():
     return ok(df.fillna(0).to_dict(orient="records"))
 
 
-# ── Run ───────────────────────────────────────────────────────────────────────
 if __name__ == "__main__":
-    print("\n  SurakshaAI API starting on http://127.0.0.1:5000")
-    print("  Try: http://127.0.0.1:5000/hello\n")
-    app.run(debug=True, port=5000, host="0.0.0.0")
+    app.run(debug=True, port=5000)
