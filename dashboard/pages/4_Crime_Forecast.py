@@ -1,14 +1,14 @@
 """Page 4 — Crime Forecast: Prophet Time-Series & Emerging Threats."""
 import sys
 from pathlib import Path
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
+_ROOT = Path(__file__).resolve().parent.parent.parent
+if str(_ROOT) not in sys.path:
+    sys.path.insert(0, str(_ROOT))
 
 import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
 from dashboard.components.cards import section_header, metric_card, trend_badge, info_box
-
-st.set_page_config(page_title="Crime Forecast — SurakshaAI", page_icon="📈", layout="wide")
 
 PROC = Path(__file__).resolve().parent.parent.parent / "data" / "processed"
 

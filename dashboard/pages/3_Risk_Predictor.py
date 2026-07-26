@@ -1,15 +1,15 @@
 """Page 3 — Risk Predictor: XGBoost Risk Classification & 6D Dimension Scores."""
 import sys
 from pathlib import Path
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
+_ROOT = Path(__file__).resolve().parent.parent.parent
+if str(_ROOT) not in sys.path:
+    sys.path.insert(0, str(_ROOT))
 
 import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
 from dashboard.components.cards import section_header, risk_badge, metric_card, info_box
 from api.engine.risk_engine import compute_risk
-
-st.set_page_config(page_title="Risk Predictor — SurakshaAI", page_icon="⚠️", layout="wide")
 
 PROC = Path(__file__).resolve().parent.parent.parent / "data" / "processed"
 

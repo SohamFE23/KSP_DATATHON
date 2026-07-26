@@ -1,12 +1,15 @@
 {
-  "name": "suraksha_api",
-  "type": "advancedio",
-  "stack": "python3.10",
+  "deployment": {
+    "name": "suraksha_api",
+    "stack": "python3.10",
+    "type": "advancedio"
+  },
   "execution": {
     "main": "main.py"
   },
   "ignore": [
     "__pycache__",
-    "*.pyc"
+    "*.pyc",
+    ".git"
   ]
 }

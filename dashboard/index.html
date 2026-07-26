@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SurakshaAI — Crime Intelligence Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0d1117;
+            color: #e6edf3;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            text-align: center;
+            max-width: 600px;
+            padding: 40px;
+        }
+        .shield { font-size: 72px; margin-bottom: 20px; }
+        h1 { font-size: 42px; font-weight: 700; margin-bottom: 8px; }
+        .subtitle {
+            color: #58a6ff;
+            font-size: 14px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+        .desc {
+            color: #8b949e;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 32px;
+        }
+        .api-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #238636, #2ea043);
+            color: white;
+            text-decoration: none;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.2s ease;
+            margin: 8px;
+        }
+        .api-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(35,134,54,0.4);
+        }
+        .api-link.secondary {
+            background: linear-gradient(135deg, #21262d, #30363d);
+            border: 1px solid #30363d;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 40px;
+        }
+        .feature {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: left;
+        }
+        .feature-icon { font-size: 24px; margin-bottom: 8px; }
+        .feature-title { font-weight: 600; font-size: 14px; margin-bottom: 4px; }
+        .feature-desc { color: #8b949e; font-size: 12px; }
+        .badge {
+            display: inline-block;
+            background: rgba(88,166,255,0.15);
+            border: 1px solid #58a6ff;
+            color: #58a6ff;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="shield">🛡️</div>
+        <h1>SurakshaAI</h1>
+        <div class="subtitle">Crime Intelligence Platform</div>
+        <div class="badge">KSP Datathon 2026 • Karnataka State Police</div>
+        <p class="desc">
+            AI-driven crime analytics powered by XGBoost, IsolationForest,
+            Prophet time-series forecasting, and geospatial clustering.
+            <br>Predict · Analyze · Prevent
+        </p>
+        <a href="/server/suraksha_api/hello" class="api-link">🔌 API Health Check</a>
+        <a href="/server/suraksha_api/districts" class="api-link secondary">📊 API Districts</a>
+
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">🗺️</div>
+                <div class="feature-title">Hotspot Maps</div>
+                <div class="feature-desc">K-Means cluster analysis & Folium heatmaps</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🤖</div>
+                <div class="feature-title">AI Risk Scoring</div>
+                <div class="feature-desc">6-dimension composite risk with XGBoost</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📈</div>
+                <div class="feature-title">Crime Forecast</div>
+                <div class="feature-desc">3-year projections with confidence bands</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🔴</div>
+                <div class="feature-title">Anomaly Detection</div>
+                <div class="feature-desc">IsolationForest outlier flagging</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

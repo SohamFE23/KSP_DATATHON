@@ -1,14 +1,14 @@
 """Page 2 — Hotspot Map: Interactive Folium Maps & Spatial Clusters."""
 import sys
 from pathlib import Path
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
+_ROOT = Path(__file__).resolve().parent.parent.parent
+if str(_ROOT) not in sys.path:
+    sys.path.insert(0, str(_ROOT))
 
 import streamlit as st
 import streamlit.components.v1 as components
 import pandas as pd
 from dashboard.components.cards import section_header, info_box
-
-st.set_page_config(page_title="Hotspot Maps — SurakshaAI", page_icon="🗺️", layout="wide")
 
 PROC = Path(__file__).resolve().parent.parent.parent / "data" / "processed"
 

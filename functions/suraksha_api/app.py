@@ -1,18 +1,19 @@
-"""api/app.py — SurakshaAI Flask REST API (10 endpoints)"""
+"""SurakshaAI Flask REST API (13 endpoints)"""
 import sys
 from pathlib import Path
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+# Ensure local engine package is importable
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from api.engine.loader import (
+from engine.loader import (
     get_district_data, get_risk_scores, get_forecast,
     get_anomalies, get_hotspots, get_network_json,
     get_districts, get_years, filter_district,
     get_socioeconomic, get_murder_motive, get_recidivism,
 )
-from api.engine.risk_engine import compute_risk, score_all
+from engine.risk_engine import compute_risk, score_all
 
 app = Flask(__name__)
 CORS(app)

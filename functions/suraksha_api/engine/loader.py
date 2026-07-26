@@ -1,10 +1,15 @@
-"""api/engine/loader.py — Load all processed CSVs once at startup."""
+"""engine/loader.py — Load all processed CSVs once at startup."""
 import pandas as pd
 import pickle
 from pathlib import Path
 from functools import lru_cache
 
-BASE = Path(__file__).resolve().parent.parent.parent / "data" / "processed"
+# Resolve data path: functions/suraksha_api/engine -> KSP_DATATHON/data/processed
+_FUNC_DIR = Path(__file__).resolve().parent.parent  # functions/suraksha_api/
+BASE = _FUNC_DIR.parent.parent / "data" / "processed"
+if not BASE.exists():
+    # Fallback: try relative to project root
+    BASE = _FUNC_DIR / "data" / "processed"
 
 def _read(fname, **kw):
     p = BASE / fname

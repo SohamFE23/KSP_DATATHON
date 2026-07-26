@@ -1,7 +1,10 @@
 {
   "functions": {
     "targets": [
-      "suraksha_api"
+      {
+        "name": "suraksha_api",
+        "path": "functions/suraksha_api"
+      }
     ],
     "source": "functions"
   },

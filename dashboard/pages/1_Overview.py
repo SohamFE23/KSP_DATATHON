@@ -1,7 +1,9 @@
 """Page 1 — Overview: KPI cards, trends, top districts, risk distribution."""
 import sys
 from pathlib import Path
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
+_ROOT = Path(__file__).resolve().parent.parent.parent
+if str(_ROOT) not in sys.path:
+    sys.path.insert(0, str(_ROOT))
 
 import streamlit as st
 import pandas as pd
@@ -9,8 +11,6 @@ import plotly.express as px
 import plotly.graph_objects as go
 
 from dashboard.components.cards import metric_card, section_header, risk_badge
-
-st.set_page_config(page_title="Overview — SurakshaAI", page_icon="📊", layout="wide")
 
 PROC = Path(__file__).resolve().parent.parent.parent / "data" / "processed"
 
