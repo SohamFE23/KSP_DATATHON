@@ -3,124 +3,629 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SurakshaAI — Crime Intelligence Platform</title>
+    <title>SurakshaAI — KSP Crime Intelligence Platform</title>
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Leaflet CSS & JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             font-family: 'Inter', sans-serif;
             background: #0d1117;
             color: #e6edf3;
             min-height: 100vh;
             display: flex;
+            flex-direction: column;
+        }
+        /* Top Navigation Header */
+        header {
+            background: #161b22;
+            border-bottom: 1px solid #30363d;
+            padding: 14px 24px;
+            display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
-        .container {
-            text-align: center;
-            max-width: 600px;
-            padding: 40px;
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
-        .shield { font-size: 72px; margin-bottom: 20px; }
-        h1 { font-size: 42px; font-weight: 700; margin-bottom: 8px; }
-        .subtitle {
-            color: #58a6ff;
+        .brand-logo { font-size: 28px; }
+        .brand-title { font-size: 20px; font-weight: 700; color: #e6edf3; }
+        .brand-subtitle { font-size: 11px; letter-spacing: 2px; color: #58a6ff; text-transform: uppercase; }
+
+        nav {
+            display: flex;
+            gap: 6px;
+        }
+        .nav-btn {
+            background: transparent;
+            border: none;
+            color: #8b949e;
+            padding: 8px 16px;
+            border-radius: 8px;
             font-size: 14px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .nav-btn:hover { background: #21262d; color: #e6edf3; }
+        .nav-btn.active { background: #21262d; color: #58a6ff; border-bottom: 2px solid #58a6ff; }
+
+        /* Main Content Container */
+        main {
+            flex: 1;
+            padding: 24px;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .tab-page { display: none; }
+        .tab-page.active { display: block; animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Grid Layouts */
+        .grid-kpi {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
             margin-bottom: 24px;
         }
-        .desc {
-            color: #8b949e;
-            font-size: 16px;
-            line-height: 1.6;
-            margin-bottom: 32px;
-        }
-        .api-link {
-            display: inline-block;
-            background: linear-gradient(135deg, #238636, #2ea043);
-            color: white;
-            text-decoration: none;
-            padding: 12px 28px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 16px;
-            transition: all 0.2s ease;
-            margin: 8px;
-        }
-        .api-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(35,134,54,0.4);
-        }
-        .api-link.secondary {
-            background: linear-gradient(135deg, #21262d, #30363d);
+        .kpi-card {
+            background: linear-gradient(135deg, #161b22, #1c2128);
             border: 1px solid #30363d;
+            border-left: 4px solid #58a6ff;
+            border-radius: 10px;
+            padding: 18px 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
-        .features {
+        .kpi-title { color: #8b949e; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+        .kpi-value { font-size: 28px; font-weight: 700; color: #e6edf3; }
+
+        .grid-2col {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin-top: 40px;
+            gap: 20px;
+            margin-bottom: 24px;
         }
-        .feature {
+        @media (max-width: 900px) { .grid-2col { grid-template-columns: 1fr; } }
+
+        /* Section Cards */
+        .card {
             background: #161b22;
             border: 1px solid #30363d;
-            border-radius: 10px;
+            border-radius: 12px;
             padding: 20px;
-            text-align: left;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
         }
-        .feature-icon { font-size: 24px; margin-bottom: 8px; }
-        .feature-title { font-weight: 600; font-size: 14px; margin-bottom: 4px; }
-        .feature-desc { color: #8b949e; font-size: 12px; }
+        .card-header {
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 12px;
+            margin-bottom: 16px;
+        }
+        .card-title { font-size: 18px; font-weight: 700; color: #e6edf3; }
+        .card-subtitle { font-size: 13px; color: #8b949e; margin-top: 4px; }
+
+        /* Form Controls */
+        select, input {
+            background: #21262d;
+            border: 1px solid #30363d;
+            color: #e6edf3;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 14px;
+            width: 100%;
+            outline: none;
+        }
+        select:focus, input:focus { border-color: #58a6ff; }
+        label { font-size: 13px; color: #8b949e; margin-bottom: 6px; display: block; }
+
+        /* Badges */
         .badge {
             display: inline-block;
-            background: rgba(88,166,255,0.15);
-            border: 1px solid #58a6ff;
-            color: #58a6ff;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 11px;
-            font-weight: 600;
-            margin-bottom: 24px;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .badge-high { background: rgba(248,81,73,0.15); border: 1px solid #f85149; color: #f85149; }
+        .badge-medium { background: rgba(227,179,65,0.15); border: 1px solid #e3b341; color: #e3b341; }
+        .badge-low { background: rgba(63,185,80,0.15); border: 1px solid #3fb950; color: #3fb950; }
+
+        /* Map Container */
+        #map { height: 550px; width: 100%; border-radius: 10px; z-index: 1; }
+
+        /* Table */
+        .table-container { overflow-x: auto; max-height: 500px; }
+        table { width: 100%; border-collapse: collapse; text-align: left; font-size: 14px; }
+        th { background: #21262d; color: #e6edf3; padding: 12px 14px; border-bottom: 1px solid #30363d; position: sticky; top: 0; }
+        td { padding: 12px 14px; border-bottom: 1px solid #21262d; color: #c9d1d9; }
+        tr:hover td { background: #161b22; }
+
+        /* Anomaly Cards */
+        .anom-item {
+            background: linear-gradient(135deg, #161b22, #1c2128);
+            border: 1px solid #30363d;
+            border-left: 4px solid #f85149;
+            border-radius: 10px;
+            padding: 14px 18px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #8b949e;
+            font-size: 13px;
+            border-top: 1px solid #30363d;
+            background: #161b22;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="shield">🛡️</div>
-        <h1>SurakshaAI</h1>
-        <div class="subtitle">Crime Intelligence Platform</div>
-        <div class="badge">KSP Datathon 2026 • Karnataka State Police</div>
-        <p class="desc">
-            AI-driven crime analytics powered by XGBoost, IsolationForest,
-            Prophet time-series forecasting, and geospatial clustering.
-            <br>Predict · Analyze · Prevent
-        </p>
-        <a href="/server/project_rainfall_function/hello" class="api-link">🔌 API Health Check</a>
-        <a href="/server/project_rainfall_function/districts" class="api-link secondary">📊 API Districts</a>
 
-        <div class="features">
-            <div class="feature">
-                <div class="feature-icon">🗺️</div>
-                <div class="feature-title">Hotspot Maps</div>
-                <div class="feature-desc">K-Means cluster analysis & Folium heatmaps</div>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🤖</div>
-                <div class="feature-title">AI Risk Scoring</div>
-                <div class="feature-desc">6-dimension composite risk with XGBoost</div>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">📈</div>
-                <div class="feature-title">Crime Forecast</div>
-                <div class="feature-desc">3-year projections with confidence bands</div>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🔴</div>
-                <div class="feature-title">Anomaly Detection</div>
-                <div class="feature-desc">IsolationForest outlier flagging</div>
+    <!-- Header Navigation -->
+    <header>
+        <div class="brand">
+            <span class="brand-logo">🛡️</span>
+            <div>
+                <div class="brand-title">SurakshaAI</div>
+                <div class="brand-subtitle">Crime Intelligence Platform</div>
             </div>
         </div>
-    </div>
+        <nav>
+            <button class="nav-btn active" onclick="showTab('overview')">📊 Overview</button>
+            <button class="nav-btn" onclick="showTab('hotspot')">🗺️ Hotspot Map</button>
+            <button class="nav-btn" onclick="showTab('risk')">⚠️ Risk Predictor</button>
+            <button class="nav-btn" onclick="showTab('forecast')">📈 Crime Forecast</button>
+            <button class="nav-btn" onclick="showTab('anomaly')">🔴 Anomaly Alerts</button>
+            <button class="nav-btn" onclick="showTab('rawdata')">📋 Raw Data</button>
+        </nav>
+    </header>
+
+    <!-- Main Container -->
+    <main>
+
+        <!-- PAGE 1: OVERVIEW -->
+        <div id="tab-overview" class="tab-page active">
+            <div class="grid-kpi">
+                <div class="kpi-card" style="border-left-color: #f85149;">
+                    <div class="kpi-title">🔴 Total Crimes Recorded</div>
+                    <div class="kpi-value" id="kpi-total-crimes">Loading...</div>
+                </div>
+                <div class="kpi-card" style="border-left-color: #58a6ff;">
+                    <div class="kpi-title">🗺️ Karnataka Districts</div>
+                    <div class="kpi-value" id="kpi-districts">Loading...</div>
+                </div>
+                <div class="kpi-card" style="border-left-color: #8b949e;">
+                    <div class="kpi-title">📅 Data Years Covered</div>
+                    <div class="kpi-value" id="kpi-years">Loading...</div>
+                </div>
+                <div class="kpi-card" style="border-left-color: #e3b341;">
+                    <div class="kpi-title">⚠️ High-Risk Districts</div>
+                    <div class="kpi-value" id="kpi-high-risk">Loading...</div>
+                </div>
+                <div class="kpi-card" style="border-left-color: #bc8cff;">
+                    <div class="kpi-title">🔍 Flagged Anomalies</div>
+                    <div class="kpi-value" id="kpi-anomalies">Loading...</div>
+                </div>
+            </div>
+
+            <div class="grid-2col">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Crime Trend Over Years</div>
+                        <div class="card-subtitle">Total IPC crimes across all Karnataka districts</div>
+                    </div>
+                    <canvas id="chart-trend" height="220"></canvas>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Top 10 Districts by Volume</div>
+                        <div class="card-subtitle">Cumulative total crimes recorded</div>
+                    </div>
+                    <canvas id="chart-top10" height="220"></canvas>
+                </div>
+            </div>
+
+            <div class="grid-2col">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Risk Level Distribution</div>
+                        <div class="card-subtitle">AI risk classification count across districts</div>
+                    </div>
+                    <canvas id="chart-risk" height="220"></canvas>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Crime Category Breakdown</div>
+                        <div class="card-subtitle">Major offense category distribution</div>
+                    </div>
+                    <canvas id="chart-categories" height="220"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE 2: HOTSPOT MAP -->
+        <div id="tab-hotspot" class="tab-page">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">🗺️ Interactive Geospatial Hotspot Clusters</div>
+                    <div class="card-subtitle">K-Means spatial clustering & district risk coordinates</div>
+                </div>
+                <div id="map"></div>
+            </div>
+        </div>
+
+        <!-- PAGE 3: RISK PREDICTOR -->
+        <div id="tab-risk" class="tab-page">
+            <div class="grid-2col">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">🎯 Select District</div>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <label for="select-risk-district">District Name</label>
+                        <select id="select-risk-district" onchange="renderRiskPredictor()"></select>
+                    </div>
+                    <div style="text-align: center; padding: 30px 0;">
+                        <div id="risk-badge-container"></div>
+                        <div style="font-size: 54px; font-weight: 700; color: #58a6ff; margin-top: 10px;" id="risk-score-value">--</div>
+                        <div style="color: #8b949e; font-size: 14px;">Composite Risk Score / 100</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">6-Dimension Risk Breakdown</div>
+                        <div class="card-subtitle">D1-Violent, D2-Property, D3-Women, D4-Volatility, D5-Volume, D6-Spike</div>
+                    </div>
+                    <canvas id="chart-risk-dims" height="250"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE 4: CRIME FORECAST -->
+        <div id="tab-forecast" class="tab-page">
+            <div class="grid-2col">
+                <div class="card" style="max-width: 320px;">
+                    <div class="card-header">
+                        <div class="card-title">🎯 Select District</div>
+                    </div>
+                    <label for="select-forecast-district">District Name</label>
+                    <select id="select-forecast-district" onchange="renderForecast()"></select>
+                    
+                    <div style="margin-top: 30px; text-align: center;">
+                        <div style="color: #8b949e; font-size: 13px; margin-bottom: 8px;">3-Year Trend Status</div>
+                        <div id="forecast-trend-badge"></div>
+                    </div>
+                </div>
+                <div class="card" style="flex: 1;">
+                    <div class="card-header">
+                        <div class="card-title">📈 Crime Forecast Projection</div>
+                        <div class="card-subtitle">Prophet time-series historical data + projection with confidence bands</div>
+                    </div>
+                    <canvas id="chart-forecast" height="250"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE 5: ANOMALY ALERTS -->
+        <div id="tab-anomaly" class="tab-page">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">🔴 IsolationForest Flagged Crime Anomalies</div>
+                    <div class="card-subtitle">Deviations and sudden spikes detected by AI outlier detection</div>
+                </div>
+                <div id="anomalies-list"></div>
+            </div>
+        </div>
+
+        <!-- PAGE 6: RAW DATA -->
+        <div id="tab-rawdata" class="tab-page">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">📋 Raw District Data Explorer</div>
+                    <div class="card-subtitle">Inspect & search district crime datasets</div>
+                </div>
+                <div style="margin-bottom: 16px;">
+                    <input type="text" id="data-search" placeholder="🔍 Search district..." onkeyup="filterTable()">
+                </div>
+                <div class="table-container">
+                    <table id="raw-table">
+                        <thead>
+                            <tr>
+                                <th>District</th>
+                                <th>Year</th>
+                                <th>Risk Score</th>
+                                <th>Risk Label</th>
+                                <th>Total Crimes</th>
+                                <th>Forecast Trend</th>
+                            </tr>
+                        </thead>
+                        <tbody id="raw-table-body"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        SurakshaAI Crime Intelligence Platform • Karnataka State Police Datathon 2026
+    </footer>
+
+    <!-- App JavaScript -->
+    <script>
+        let DATA = null;
+        let mapInstance = null;
+        let trendChart = null, top10Chart = null, riskChart = null, catChart = null, dimsChart = null, fcChart = null;
+
+        // Fetch data and initialize app
+        fetch('data/summary.json')
+            .then(res => res.json())
+            .then(data => {
+                DATA = data;
+                initApp();
+            })
+            .catch(err => console.error("Data load failed:", err));
+
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-page').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            
+            document.getElementById('tab-' + tabId).classList.add('active');
+            event.target.classList.add('active');
+
+            if (tabId === 'hotspot' && mapInstance) {
+                setTimeout(() => mapInstance.invalidateSize(), 200);
+            }
+        }
+
+        function initApp() {
+            // Render KPI
+            document.getElementById('kpi-total-crimes').innerText = DATA.total_crimes.toLocaleString();
+            document.getElementById('kpi-districts').innerText = DATA.districts_count;
+            document.getElementById('kpi-years').innerText = DATA.years_list.length + " (" + DATA.years_list[0] + "-" + DATA.years_list[DATA.years_list.length-1] + ")";
+            document.getElementById('kpi-high-risk').innerText = DATA.risk_dist['HIGH'] || 0;
+            document.getElementById('kpi-anomalies').innerText = DATA.anomalies.length;
+
+            // Overview Charts
+            renderOverviewCharts();
+
+            // Populate District Dropdowns
+            const riskSel = document.getElementById('select-risk-district');
+            const fcSel = document.getElementById('select-forecast-district');
+            DATA.districts_list.forEach(d => {
+                riskSel.add(new Option(d, d));
+                fcSel.add(new Option(d, d));
+            });
+
+            // Initialize Hotspot Map
+            initHotspotMap();
+
+            // Render Predictor & Forecast
+            renderRiskPredictor();
+            renderForecast();
+
+            // Render Anomalies
+            renderAnomalies();
+
+            // Render Raw Table
+            renderRawTable();
+        }
+
+        function renderOverviewCharts() {
+            // 1. Trend Chart
+            const ctx1 = document.getElementById('chart-trend').getContext('2d');
+            trendChart = new Chart(ctx1, {
+                type: 'line',
+                data: {
+                    labels: DATA.year_trends.map(t => t.year),
+                    datasets: [{
+                        label: 'Total Crimes',
+                        data: DATA.year_trends.map(t => t.crimes),
+                        borderColor: '#58a6ff',
+                        backgroundColor: 'rgba(88,166,255,0.1)',
+                        fill: true,
+                        tension: 0.3
+                    }]
+                },
+                options: { responsive: true, plugins: { legend: { display: false } } }
+            });
+
+            // 2. Top 10 Chart
+            const ctx2 = document.getElementById('chart-top10').getContext('2d');
+            top10Chart = new Chart(ctx2, {
+                type: 'bar',
+                data: {
+                    labels: DATA.top10.map(t => t.district),
+                    datasets: [{
+                        label: 'Total Crimes',
+                        data: DATA.top10.map(t => t.crimes),
+                        backgroundColor: '#3fb950'
+                    }]
+                },
+                options: { indexAxis: 'y', responsive: true, plugins: { legend: { display: false } } }
+            });
+
+            // 3. Risk Dist Chart
+            const ctx3 = document.getElementById('chart-risk').getContext('2d');
+            riskChart = new Chart(ctx3, {
+                type: 'doughnut',
+                data: {
+                    labels: Object.keys(DATA.risk_dist),
+                    datasets: [{
+                        data: Object.values(DATA.risk_dist),
+                        backgroundColor: ['#f85149', '#e3b341', '#3fb950']
+                    }]
+                },
+                options: { responsive: true }
+            });
+
+            // 4. Categories Chart
+            const ctx4 = document.getElementById('chart-categories').getContext('2d');
+            catChart = new Chart(ctx4, {
+                type: 'bar',
+                data: {
+                    labels: Object.keys(DATA.cat_totals),
+                    datasets: [{
+                        label: 'Incident Count',
+                        data: Object.values(DATA.cat_totals),
+                        backgroundColor: '#bc8cff'
+                    }]
+                },
+                options: { responsive: true, plugins: { legend: { display: false } } }
+            });
+        }
+
+        function initHotspotMap() {
+            mapInstance = L.map('map').setView([14.7, 75.8], 7);
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+                attribution: '&copy; OpenStreetMap &copy; CARTO'
+            }).addTo(mapInstance);
+
+            DATA.hotspots.forEach(h => {
+                const color = h.RISK_LABEL === 'HIGH' ? '#f85149' : (h.RISK_LABEL === 'MEDIUM' ? '#e3b341' : '#3fb950');
+                const marker = L.circleMarker([h.LAT, h.LON], {
+                    radius: Math.min(25, Math.max(8, h.TOTAL_CRIMES / 300)),
+                    color: color,
+                    fillColor: color,
+                    fillOpacity: 0.6
+                }).addTo(mapInstance);
+
+                marker.bindPopup(`
+                    <div style="color:#000;">
+                        <b>${h.DISTRICT}</b><br>
+                        Cluster: ${h.CLUSTER}<br>
+                        Risk Label: <b>${h.RISK_LABEL}</b><br>
+                        Total Crimes: ${h.TOTAL_CRIMES.toLocaleString()}
+                    </div>
+                `);
+            });
+        }
+
+        function renderRiskPredictor() {
+            const dist = document.getElementById('select-risk-district').value || DATA.districts_list[0];
+            const dData = DATA.districts[dist];
+
+            document.getElementById('risk-score-value').innerText = dData.risk_score;
+            
+            const badgeContainer = document.getElementById('risk-badge-container');
+            const labelClass = dData.risk_label === 'HIGH' ? 'badge-high' : (dData.risk_label === 'MEDIUM' ? 'badge-medium' : 'badge-low');
+            badgeContainer.innerHTML = `<span class="badge ${labelClass}">${dData.risk_label} RISK</span>`;
+
+            const ctx = document.getElementById('chart-risk-dims').getContext('2d');
+            if (dimsChart) dimsChart.destroy();
+
+            dimsChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Violent (D1)', 'Property (D2)', 'Women (D3)', 'Volatility (D4)', 'Volume (D5)', 'Spike (D6)'],
+                    datasets: [{
+                        label: 'Score Contribution',
+                        data: [dData.d1, dData.d2, dData.d3, dData.d4, dData.d5, dData.d6],
+                        backgroundColor: ['#f85149', '#ffa657', '#e3b341', '#79c0ff', '#58a6ff', '#bc8cff']
+                    }]
+                },
+                options: { indexAxis: 'y', responsive: true, plugins: { legend: { display: false } } }
+            });
+        }
+
+        function renderForecast() {
+            const dist = document.getElementById('select-forecast-district').value || DATA.districts_list[0];
+            const dData = DATA.districts[dist];
+
+            const badge = document.getElementById('forecast-trend-badge');
+            const tColor = dData.trend === 'INCREASING' ? 'badge-high' : 'badge-low';
+            badge.innerHTML = `<span class="badge ${tColor}">${dData.trend}</span>`;
+
+            const fc = dData.forecast;
+            const ctx = document.getElementById('chart-forecast').getContext('2d');
+            if (fcChart) fcChart.destroy();
+
+            fcChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: fc.map(f => f.year),
+                    datasets: [
+                        {
+                            label: 'Historical / Forecast',
+                            data: fc.map(f => f.yhat),
+                            borderColor: '#58a6ff',
+                            backgroundColor: 'rgba(88,166,255,0.2)',
+                            fill: true
+                        },
+                        {
+                            label: 'Upper Bound',
+                            data: fc.map(f => f.yhat_upper),
+                            borderColor: 'rgba(248,81,73,0.4)',
+                            borderDash: [5, 5],
+                            fill: false
+                        }
+                    ]
+                },
+                options: { responsive: true }
+            });
+        }
+
+        function renderAnomalies() {
+            const container = document.getElementById('anomalies-list');
+            container.innerHTML = DATA.anomalies.map(a => `
+                <div class="anom-item">
+                    <div>
+                        <div style="font-weight: 700; font-size: 16px; color: #e6edf3;">${a.district}</div>
+                        <div style="font-size: 13px; color: #8b949e;">Year ${a.year} • Anomaly Score: <span style="color:#f85149; font-weight:700;">${a.score.toFixed(3)}</span></div>
+                    </div>
+                    <div>
+                        <span class="badge badge-high">${a.severity}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderRawTable() {
+            const tbody = document.getElementById('raw-table-body');
+            tbody.innerHTML = DATA.districts_list.map(d => {
+                const info = DATA.districts[d];
+                return `
+                    <tr>
+                        <td><b>${d}</b></td>
+                        <td>${info.latest_year}</td>
+                        <td>${info.risk_score}</td>
+                        <td><span class="badge ${info.risk_label === 'HIGH' ? 'badge-high' : 'badge-medium'}">${info.risk_label}</span></td>
+                        <td>${info.total_crimes.toLocaleString()}</td>
+                        <td>${info.trend}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function filterTable() {
+            const query = document.getElementById('data-search').value.toLowerCase();
+            const rows = document.querySelectorAll('#raw-table-body tr');
+            rows.forEach(r => {
+                r.style.display = r.innerText.toLowerCase().includes(query) ? '' : 'none';
+            });
+        }
+    </script>
 </body>
 </html>
